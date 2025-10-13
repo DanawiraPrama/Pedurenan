@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Properti Eksklusif Rp14 Miliar - Warisan Privasi</title>
+    <title>Properti Eksklusif Rp14 Miliar - Warisan Privasi & Investasi Cerdas</title>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        /* === RESET & GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body, html {
             font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
             scroll-behavior: smooth;
             background-color: #111;
             overflow-x: hidden;
         }
 
+        /* === SECTION DENGAN PARALLAX === */
         .parallax-section {
             height: 100vh;
             background-size: cover;
@@ -37,6 +46,15 @@
             overflow: hidden;
         }
 
+        /* Untuk mobile - hilangkan fixed background */
+        @media only screen and (max-width: 768px) {
+            .parallax-section {
+                background-attachment: scroll;
+                background-position: center center !important;
+            }
+        }
+
+        /* Overlay gelap - DIPERKECIL TRANSPARANSINYA */
         .parallax-section::before {
             content: '';
             position: absolute;
@@ -48,6 +66,7 @@
             z-index: 1;
         }
 
+        /* Kotak konten - DIPERKECIL dan DIPERJELAS */
         .content-box {
             position: relative;
             z-index: 2;
@@ -73,14 +92,17 @@
             font-size: 2.2rem;
             margin-bottom: 0.8rem;
             color: #fff;
+            line-height: 1.2;
         }
 
         .content-box p {
             font-size: 1rem;
             margin-bottom: 1.2rem;
             color: #eee;
+            line-height: 1.5;
         }
 
+        /* === TOMBOL CTA === */
         .cta-button {
             display: inline-block;
             background-color: #c9a961;
@@ -98,9 +120,253 @@
 
         .cta-button:hover {
             background-color: #fff;
+            color: #111;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* === TOMBOL PLAY VIDEO === */
+        .video-play-button {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(201, 169, 97, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .video-play-button:hover {
+            background-color: #fff;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .video-play-button i {
+            color: #111;
+            font-size: 1.3rem;
+            margin-left: 3px;
+        }
+
+        .video-play-text {
+            position: absolute;
+            bottom: 55px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+        /* === NAVIGASI === */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 50px;
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .navbar a:hover {
+            color: #c9a961;
+        }
+
+        /* === CONTACT SECTION === */
+        .contact-section {
+            padding: 80px 20px;
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #222;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: #777;
+        }
+
+        .contact-form button {
+            background-color: #c9a961;
+            color: #111;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-form button:hover {
+            background-color: #fff;
             transform: translateY(-3px);
         }
 
+        /* === VIDEO MODAL === */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .video-modal-content iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        .close-video-modal {
+            position: absolute;
+            top: -40px;
+            right: -25px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-video-modal:hover {
+            color: #c9a961;
+        }
+
+        /* === PARALLAX MOBILE ADVANCED === */
+        .parallax-mobile-bg {
+            display: none;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .parallax-section {
+                background-attachment: scroll;
+                background-image: none !important;
+                position: relative;
+                padding: 1rem;
+            }
+            
+            .parallax-mobile-bg {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                z-index: 0;
+            }
+            
+            .content-box {
+                padding: 1.5rem;
+                margin: 0.5rem;
+                max-width: 90%;
+            }
+            
+            .content-box h2 {
+                font-size: 1.8rem;
+            }
+            
+            .navbar {
+                display: none;
+            }
+            
+            .video-modal-content iframe {
+                height: 300px;
+            }
+            
+            .close-video-modal {
+                top: -30px;
+                right: -10px;
+            }
+
+            .video-play-button {
+                bottom: 70px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .video-play-text {
+                bottom: 50px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* === VALUE BADGES === */
         .value-badges {
             display: flex;
             justify-content: center;
@@ -118,11 +384,13 @@
             color: #c9a961;
         }
 
+        /* === HIGHLIGHT TEXT === */
         .highlight {
             color: #c9a961;
             font-weight: 600;
         }
 
+        /* === FACILITIES GRID === */
         .facilities-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -143,41 +411,27 @@
             width: 20px;
         }
 
-        .contact-section {
-            padding: 80px 20px;
-            background: #1a1a1a;
-            color: #fff;
-            text-align: center;
-        }
-
-        .contact-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        @media only screen and (max-width: 768px) {
-            .parallax-section {
-                background-attachment: scroll;
-            }
-            
-            .content-box {
-                padding: 1.5rem;
-                max-width: 90%;
-            }
-            
-            .content-box h2 {
-                font-size: 1.8rem;
-            }
-        }
     </style>
 </head>
 <body>
 
+    <!-- Navigasi -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#warisan">Warisan</a></li>
+            <li><a href="#spesifikasi">Spesifikasi</a></li>
+            <li><a href="#investasi">Investasi</a></li>
+            <li><a href="#lokasi">Lokasi</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
     <!-- Section 1: Warisan Privasi -->
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+    <section id="warisan" class="parallax-section" style="background-image: url('../images/banner-exterior.png');">
+        <div class="parallax-mobile-bg" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
         <div class="content-box">
             <h2>Warisan Privasi Absolut</h2>
-            <p>Di era privasi sebagai kemewahan tertinggi, properti ini adalah <span class="highlight">benteng pribadi dan simbol status</span>.</p>
+            <p>Di era privasi sebagai kemewahan tertinggi, properti ini adalah <span class="highlight">benteng pribadi dan simbol status</span> bagi keluarga eksklusif.</p>
             
             <div class="value-badges">
                 <span class="value-badge">🏆 Status Symbol</span>
@@ -185,13 +439,19 @@
                 <span class="value-badge">🎯 Eksklusif</span>
             </div>
             
-            <p><strong>Desain "Rumah Ngantong":</strong> Sempurna untuk pejabat & pengusaha.</p>
-            <a href="https://wa.me/6281284942940?text=Halo,%20saya%20tertarik%20dengan%20Warisan%20Privasi%20di%20Jalan%20Pedurenan%20No.%20109." class="cta-button">Private Viewing</a>
+            <p><strong>Desain "Rumah Ngantong":</strong> Sempurna untuk pejabat & pengusaha yang menghargai privasi.</p>
+            <a href="https://wa.me/6281284942940?text=Halo,%20saya%20tertarik%20dengan%20Warisan%20Privasi%20di%20Jalan%20Pedurenan%20No.%20109.%20Mohon%20info%20lebih%20lanjut." class="cta-button">Private Viewing Eksklusif</a>
         </div>
+        
+        <div class="video-play-button" onclick="openVideoModal()">
+            <i class="fas fa-play"></i>
+        </div>
+        <div class="video-play-text">Putar Video</div>
     </section>
 
-    <!-- Section 2: Spesifikasi -->
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+    <!-- Section 2: Spesifikasi Superior -->
+    <section id="spesifikasi" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+        <div class="parallax-mobile-bg" style="background-image: url('https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
         <div class="content-box">
             <h2>Spesifikasi Tanpa Kompromi</h2>
             <p>Dibangun dengan standar tertinggi untuk mereka yang tidak menerima yang kedua terbaik.</p>
@@ -202,13 +462,14 @@
                 <span class="value-badge">🛡️ 23 CCTV</span>
             </div>
             
-            <p><strong>Fitur Premium:</strong> Plafon 4.5m, sistem keamanan lengkap, carport 12+ mobil.</p>
+            <p><strong>Fitur Premium:</strong> Plafon 4.5m, sistem keamanan lengkap, carport 12+ mobil, ruang kantor eksekutif.</p>
             <a href="#kontak" class="cta-button">Detail Spesifikasi</a>
         </div>
     </section>
 
-    <!-- Section 3: Investasi -->
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+    <!-- Section 3: Nilai Investasi -->
+    <section id="investasi" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+        <div class="parallax-mobile-bg" style="background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
         <div class="content-box">
             <h2>Investasi Masa Depan</h2>
             <p>Rp14 Miliar - penempatan aset strategis dengan <span class="highlight">prospek apresiasi eksponensial</span>.</p>
@@ -224,11 +485,12 @@
         </div>
     </section>
 
-    <!-- Section 4: Lokasi -->
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80');">
+    <!-- Section 4: BARU - Lokasi & Fasilitas -->
+    <section id="lokasi" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');">
+        <div class="parallax-mobile-bg" style="background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');"></div>
         <div class="content-box">
-            <h2>Lokasi Strategis</h2>
-            <p>Pusat segala kemudahan dalam jangkauan, <span class="highlight">keseimbangan sempurna</span> antara privasi dan aksesibilitas.</p>
+            <h2>Lokasi Strategis & Fasilitas</h2>
+            <p>Pusat segala kemudahan dalam jangkauan, menawarkan <span class="highlight">keseimbangan sempurna</span> antara privasi dan aksesibilitas.</p>
             
             <div class="value-badges">
                 <span class="value-badge">📍 Lokasi Premium</span>
@@ -237,21 +499,43 @@
             </div>
 
             <div class="facilities-grid">
-                <div class="facility-item"><i class="fas fa-train"></i><span>LRT Harjamukti - 3km</span></div>
-                <div class="facility-item"><i class="fas fa-road"></i><span>Tol Cibubur - 2km</span></div>
-                <div class="facility-item"><i class="fas fa-graduation-cap"></i><span>Al Azhar - 2km</span></div>
-                <div class="facility-item"><i class="fas fa-shopping-cart"></i><span>Mall - 2km</span></div>
+                <div class="facility-item">
+                    <i class="fas fa-train"></i>
+                    <span>LRT Harjamukti - 3km</span>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-road"></i>
+                    <span>Tol Cibubur - 2km</span>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Al Azhar 20 - 2km</span>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cibubur Junction - 2km</span>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-tree"></i>
+                    <span>Perkemahan Cibubur - 3km</span>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-store"></i>
+                    <span>Pasar Cisalak - 2km</span>
+                </div>
             </div>
 
-            <a href="https://maps.app.goo.gl/eCY6Vqka1oR5A5Qq8" target="_blank" class="cta-button">Lihat Peta Lokasi</a>
+            <p><strong>Infrastruktur Masa Depan:</strong> Flyover Margonda 2026 & perkembangan Cimanggis sebagai kota mandiri.</p>
+            <a href="https://maps.app.goo.gl/eCY6Vqka1oR5A5Qq8?g_st=iwb" target="_blank" class="cta-button">Lihat Peta Lokasi</a>
         </div>
     </section>
 
-    <!-- Section 5: Kontak -->
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=2065&q=80');">
+    <!-- Section 5: Kontak Eksklusif -->
+    <section id="kontak" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80');">
+        <div class="parallax-mobile-bg" style="background-image: url('https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80');"></div>
         <div class="content-box">
             <h2>Ambil Langkah Eksklusif</h2>
-            <p>Aset langka ini hanya untuk <span class="highlight">individu terpilih</span> dengan kapasitas finansial.</p>
+            <p>Aset langka ini hanya ditawarkan kepada <span class="highlight">individu terpilih</span> dengan kapasitas finansial.</p>
             
             <div class="value-badges">
                 <span class="value-badge">🎯 By Appointment</span>
@@ -259,7 +543,8 @@
                 <span class="value-badge">🏆 Eksklusif</span>
             </div>
             
-            <a href="https://wa.me/6281284942940?text=Halo,%20saya%20tertarik%20dengan%20properti%20Rp14%20Miliar." class="cta-button">WhatsApp Sekarang</a>
+            <p><strong>Scarcity & Exclusivity:</strong> Satu-satunya di Cibubur dengan kombinasi sempurna.</p>
+            <a href="https://wa.me/6281284942940?text=Halo,%20saya%20tertarik%20dengan%20properti%20eksklusif%20Rp14%20Miliar.%20Ingin%20jadwalkan%20private%20viewing." class="cta-button">WhatsApp Sekarang</a>
         </div>
     </section>
 
@@ -268,37 +553,136 @@
         <div class="contact-container">
             <h2>Konsultasi Eksklusif</h2>
             <p>Hanya untuk calon pemilik dengan apresiasi terhadap nilai sebenarnya.</p>
-            <form class="contact-form">
-                <input type="text" placeholder="Nama Lengkap" required>
-                <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="WhatsApp" required>
-                <textarea rows="4" placeholder="Pertanyaan khusus"></textarea>
-                <button type="submit" class="cta-button">Request Private Viewing</button>
+            <form id="whatsapp-form" class="contact-form">
+                <input type="text" name="name" placeholder="Nama Lengkap" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="WhatsApp" required>
+                <textarea name="message" rows="4" placeholder="Pertanyaan khusus"></textarea>
+                <button type="submit">Request Private Viewing</button>
             </form>
+            <p style="margin-top: 15px; font-size: 0.85rem; color: #777;">
+                <i class="fas fa-shield-alt"></i> Informasi dijaga kerahasiaannya
+            </p>
         </div>
     </section>
 
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-video-modal" onclick="closeVideoModal()">&times;</span>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <script>
-        // Scroll animation
-        const contentBoxes = document.querySelectorAll('.content-box');
-        const checkVisibility = () => {
-            contentBoxes.forEach(box => {
-                const rect = box.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0) {
-                    box.classList.add('is-visible');
+        // === PARALLAX EFFECT ===
+        function initParallax() {
+            const isMobile = window.innerWidth <= 768;
+            const parallaxSections = document.querySelectorAll('.parallax-section');
+            
+            if (isMobile) {
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    
+                    parallaxSections.forEach((section) => {
+                        const mobileBg = section.querySelector('.parallax-mobile-bg');
+                        if (mobileBg) {
+                            const speed = 0.3;
+                            const yPos = -(scrolled * speed);
+                            const sectionTop = section.offsetTop;
+                            const sectionHeight = section.offsetHeight;
+                            
+                            if (scrolled > sectionTop - window.innerHeight && scrolled < sectionTop + sectionHeight) {
+                                mobileBg.style.transform = `translateY(${yPos}px)`;
+                            }
+                        }
+                    });
+                });
+            } else {
+                parallaxSections.forEach(section => {
+                    section.style.backgroundAttachment = 'fixed';
+                });
+            }
+        }
+
+        // === SCROLL ANIMATION ===
+        function initScrollAnimation() {
+            const contentBoxes = document.querySelectorAll('.content-box');
+            
+            const checkVisibility = () => {
+                contentBoxes.forEach(box => {
+                    const rect = box.getBoundingClientRect();
+                    const isVisible = (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0);
+                    
+                    if (isVisible) {
+                        box.classList.add('is-visible');
+                    }
+                });
+            };
+            
+            checkVisibility();
+            window.addEventListener('scroll', checkVisibility);
+        }
+
+        // === VIDEO MODAL ===
+        function openVideoModal() {
+            document.getElementById('videoModal').style.display = 'flex';
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').style.display = 'none';
+        }
+
+        // === FORM KE WHATSAPP ===
+        document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const phoneNumber = "6281284942940"; 
+            const name = document.querySelector('input[name="name"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const phone = document.querySelector('input[name="phone"]').value;
+            const message = document.querySelector('textarea[name="message"]').value;
+            
+            const text = `Halo, saya tertarik dengan properti eksklusif Rp14 Miliar.%0A%0A` +
+                        `*Data Diri:*%0A` +
+                        `Nama: ${name}%0A` +
+                        `Email: ${email}%0A` +
+                        `WhatsApp: ${phone}%0A%0A` +
+                        `*Pertanyaan:*%0A` +
+                        `${message || 'Ingin private viewing'}`;
+            
+            const url = `https://wa.me/${phoneNumber}?text=${text}`;
+            window.open(url, '_blank');
+        });
+
+        // === SMOOTH SCROLL ===
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-        };
-        
-        window.addEventListener('load', checkVisibility);
-        window.addEventListener('scroll', checkVisibility);
+        });
 
-        // Parallax for mobile
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.parallax-section').forEach(section => {
-                section.style.backgroundAttachment = 'scroll';
-            });
+        // === INITIALIZE ===
+        document.addEventListener('DOMContentLoaded', function() {
+            initParallax();
+            initScrollAnimation();
+            window.addEventListener('resize', initParallax);
+        });
+
+        // Close modal ketika klik di luar
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeVideoModal();
+            }
         }
+
     </script>
 </body>
 </html>
