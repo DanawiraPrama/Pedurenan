@@ -311,6 +311,7 @@
             display: none;
         }
 
+        /* --- DIPERBESAR UNTUK MOBILE --- */
         @media only screen and (max-width: 768px) {
             .parallax-section {
                 background-attachment: scroll;
@@ -331,14 +332,34 @@
                 z-index: 0;
             }
             
+            /* Kotak konten dibuat lebih besar dan jelas */
             .content-box {
-                padding: 1.5rem;
-                margin: 0.5rem;
-                max-width: 90%;
+                padding: 2.5rem 2rem; /* Padding diperbesar */
+                margin: 1rem;
+                max-width: 95%; /* Lebar hampir penuh */
             }
             
+            /* Judul dibuat lebih besar */
             .content-box h2 {
-                font-size: 1.8rem;
+                font-size: 2.2rem; /* Diperbesar dari 1.8rem */
+            }
+            
+            /* Paragraf dibuat lebih besar */
+            .content-box p {
+                font-size: 1.1rem; /* Diperbesar dari default 1rem */
+            }
+
+            /* Badge dan fasilitas juga diperbesar */
+            .value-badges {
+                gap: 12px;
+            }
+            .value-badge {
+                font-size: 0.85rem; /* Diperbesar dari 0.75rem */
+                padding: 8px 15px;
+            }
+            .facilities-grid {
+                gap: 12px;
+                font-size: 1rem; /* Diperbesar dari 0.9rem */
             }
             
             .navbar {
@@ -575,27 +596,29 @@
     </div>
 
      <script>
-        // --- PARALLAX MOBILE & DESKTOP (OPTIMIZED) ---
+        // --- PARALLAX MOBILE & DESKTOP (OPTIMIZED & DIPERBAIKI) ---
         const isMobile = window.innerWidth <= 768;
-        const parallaxElements = document.querySelectorAll('.fixed-section');
-        let ticking = false; // Flag untuk mencegah multiple requestAnimationFrame
+        // PERBAIKAN: Sesuaikan class selector dengan HTML
+        const parallaxElements = document.querySelectorAll('.parallax-section'); 
+        let ticking = false;
 
         function updateParallax() {
             const scrolled = window.pageYOffset;
             parallaxElements.forEach(element => {
-                const mobileBg = element.querySelector('.bg-mobile');
+                // PERBAIKAN: Sesuaikan class selector dengan HTML
+                const mobileBg = element.querySelector('.parallax-mobile-bg');
                 if (mobileBg) {
                     const speed = 0.5;
                     const yPos = -(scrolled * speed);
                     mobileBg.style.backgroundPosition = `center ${yPos}px`;
                 }
             });
-            ticking = false; // Reset flag setelah update
+            ticking = false;
         }
 
         function requestTick() {
             if (!ticking) {
-                window.requestAnimationFrame(updateParallax); // Meminta browser untuk menjalankan animasi
+                window.requestAnimationFrame(updateParallax);
                 ticking = true;
             }
         }
@@ -603,12 +626,7 @@
         if (isMobile) {
             window.addEventListener('scroll', requestTick);
         } else {
-            parallaxElements.forEach(element => {
-                const desktopBg = element.querySelector('.bg-desktop');
-                if (desktopBg) {
-                    desktopBg.style.backgroundAttachment = 'fixed';
-                }
-            });
+            // Parallax desktop menggunakan CSS, tidak perlu JS
         }
 
         // === JAVASCRIPT UNTUK ANIMASI FADE-IN SAAT SCROLL ===
@@ -651,10 +669,13 @@
             const phoneNumber = "6281284942940"; 
             const name = document.querySelector('input[name="name"]').value;
             const email = document.querySelector('input[name="email"]').value;
+            const phone = document.querySelector('input[name="phone"]').value; // Tambahkan phone
             const message = document.querySelector('textarea[name="message"]').value;
-            const text = `Halo, saya tertarik dengan properti di Jalan Pedurenan No. 109.%0A%0A` +
+            // Format pesan disesuaikan
+            const text = `Halo, saya tertarik dengan properti eksklusif Rp14 Miliar.%0A%0A` +
                           `Nama: ${name}%0A` +
                           `Email: ${email}%0A` +
+                          `WhatsApp: ${phone}%0A` +
                           `Pesan: ${message}`;
             const url = `https://wa.me/${phoneNumber}?text=${text}`;
             window.open(url, '_blank').focus();
