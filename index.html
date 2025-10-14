@@ -27,8 +27,6 @@
             scroll-behavior: smooth;
             background-color: #111;
             overflow-x: hidden;
-            /* Ukuran font dasar untuk desktop */
-            font-size: 18px; /* Ditingkatkan dari 16px */
         }
 
         /* === SECTION DENGAN PARALLAX === */
@@ -91,17 +89,17 @@
 
         .content-box h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem; /* Ditingkatkan dari 2.2rem */
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
             color: #fff;
             line-height: 1.2;
         }
 
         .content-box p {
-            font-size: 1.1rem; /* Ditingkatkan dari 1rem */
+            font-size: 1rem;
             margin-bottom: 1.2rem;
             color: #eee;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         /* === TOMBOL CTA === */
@@ -109,15 +107,15 @@
             display: inline-block;
             background-color: #c9a961;
             color: #111;
-            padding: 14px 32px; /* Diperbesar */
+            padding: 12px 28px;
             text-decoration: none;
             font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 1rem; /* Ditingkatkan dari 0.85rem */
-            margin: 12px 0; /* Margin diperbesar */
+            font-size: 0.85rem;
+            margin: 8px 0;
         }
 
         .cta-button:hover {
@@ -133,8 +131,8 @@
             bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
-            width: 70px; /* Diperbesar */
-            height: 70px; /* Diperbesar */
+            width: 60px;
+            height: 60px;
             background-color: rgba(201, 169, 97, 0.9);
             border-radius: 50%;
             display: flex;
@@ -152,7 +150,7 @@
 
         .video-play-button i {
             color: #111;
-            font-size: 1.5rem; /* Diperbesar */
+            font-size: 1.3rem;
             margin-left: 3px;
         }
 
@@ -162,7 +160,7 @@
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Playfair Display', serif;
-            font-size: 1rem; /* Diperbesar dari 0.9rem */
+            font-size: 0.9rem;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -177,7 +175,7 @@
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
-            padding: 12px 28px; /* Diperbesar */
+            padding: 10px 25px;
             border-radius: 50px;
             z-index: 1000;
             border: 1px solid rgba(255,255,255,0.2);
@@ -194,7 +192,7 @@
         .navbar a {
             color: #fff;
             text-decoration: none;
-            font-size: 0.95rem; /* Diperbesar dari 0.85rem */
+            font-size: 0.85rem;
             transition: color 0.3s ease;
             font-weight: 500;
         }
@@ -218,12 +216,12 @@
 
         .contact-section h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem; /* Diperbesar */
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
         .contact-section p {
-            font-size: 1.1rem; /* Diperbesar */
+            font-size: 1rem;
             color: #aaa;
             margin-bottom: 2rem;
         }
@@ -236,28 +234,27 @@
 
         .contact-form input, .contact-form textarea {
             width: 100%;
-            padding: 14px; /* Diperbesar */
+            padding: 12px;
             border-radius: 8px;
             border: 1px solid #444;
             background: #222;
             color: #fff;
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem; /* Diperbesar */
+            font-size: 0.95rem;
         }
 
         .contact-form input::placeholder, .contact-form textarea::placeholder {
             color: #777;
-            font-size: 1rem; /* Diperbesar */
         }
 
         .contact-form button {
             background-color: #c9a961;
             color: #111;
-            padding: 16px; /* Diperbesar */
+            padding: 15px;
             border: none;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1rem; /* Diperbesar */
+            font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
@@ -309,72 +306,18 @@
             color: #c9a961;
         }
 
-        /* === VALUE BADGES === */
-        .value-badges {
-            display: flex;
-            justify-content: center;
-            gap: 12px; /* Diperbesar */
-            margin: 20px 0; /* Diperbesar */
-            flex-wrap: wrap;
-        }
-
-        .value-badge {
-            background: rgba(201, 169, 97, 0.2);
-            border: 1px solid #c9a961;
-            padding: 8px 16px; /* Diperbesar */
-            border-radius: 15px;
-            font-size: 0.9rem; /* Diperbesar dari 0.75rem */
-            color: #c9a961;
-        }
-
-        /* === HIGHLIGHT TEXT === */
-        .highlight {
-            color: #c9a961;
-            font-weight: 600;
-            font-size: inherit; /* Mengikuti ukuran parent */
-        }
-
-        /* === FACILITIES GRID === */
-        .facilities-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px; /* Diperbesar */
-            margin: 25px 0; /* Diperbesar */
-            text-align: left;
-        }
-
-        .facility-item {
-            display: flex;
-            align-items: center;
-            gap: 10px; /* Diperbesar */
-            font-size: 1rem; /* Diperbesar dari 0.9rem */
-        }
-
-        .facility-item i {
-            color: #c9a961;
-            width: 22px; /* Diperbesar */
-            font-size: 1.1rem; /* Diperbesar */
-        }
-
         /* === PARALLAX MOBILE ADVANCED === */
         .parallax-mobile-bg {
             display: none;
         }
 
-        /* --- PERBAIKAN BESAR UNTUK MOBILE: UKURAN FONT DIPERBESAR SIGNIFIKAN --- */
+        /* --- DIPERBESAR UNTUK MOBILE --- */
         @media only screen and (max-width: 768px) {
-            /* Ukuran font dasar untuk mobile - DIPERBESAR SIGNIFIKAN */
-            html {
-                font-size: 20px; /* DITINGKATKAN SIGNIFIKAN dari 16px */
-            }
-            
             .parallax-section {
                 background-attachment: scroll;
                 background-image: none !important;
                 position: relative;
                 padding: 1rem;
-                min-height: 100vh; /* Memastikan tinggi minimum */
-                height: auto; /* Biarkan tinggi menyesuaikan konten */
             }
             
             .parallax-mobile-bg {
@@ -391,46 +334,32 @@
             
             /* Kotak konten dibuat lebih besar dan jelas */
             .content-box {
-                padding: 3rem 2rem; /* Padding DIPERBESAR */
-                margin: 1.5rem;
+                padding: 2.5rem 2rem; /* Padding diperbesar */
+                margin: 1rem;
                 max-width: 95%; /* Lebar hampir penuh */
-                background-color: rgba(0, 0, 0, 0.3); /* Background lebih gelap untuk kontras */
-                backdrop-filter: blur(3px); /* Blur effect lebih kuat */
             }
             
-            /* Judul dibuat BESAR dan proporsional */
+            /* Judul dibuat lebih besar */
             .content-box h2 {
-                font-size: 2.8rem; /* DIPERBESAR SIGNIFIKAN dari 2.2rem */
-                line-height: 1.1;
-                margin-bottom: 1.5rem;
+                font-size: 2.2rem; /* Diperbesar dari 1.8rem */
             }
             
-            /* Paragraf dibuat BESAR dan mudah dibaca */
+            /* Paragraf dibuat lebih besar */
             .content-box p {
-                font-size: 1.3rem; /* DIPERBESAR SIGNIFIKAN dari 1rem */
-                line-height: 1.7;
-                margin-bottom: 1.8rem;
+                font-size: 1.1rem; /* Diperbesar dari default 1rem */
             }
 
-            /* Badge dan fasilitas juga DIPERBESAR SIGNIFIKAN */
+            /* Badge dan fasilitas juga diperbesar */
             .value-badges {
-                gap: 15px;
-                margin: 2rem 0;
-            }
-            .value-badge {
-                font-size: 1.1rem; /* DIPERBESAR SIGNIFIKAN dari 0.75rem */
-                padding: 10px 18px;
-            }
-            .facilities-grid {
-                gap: 15px;
-                margin: 2rem 0;
-            }
-            .facility-item {
-                font-size: 1.2rem; /* DIPERBESAR SIGNIFIKAN dari 0.9rem */
                 gap: 12px;
             }
-            .facility-item i {
-                font-size: 1.3rem; /* DIPERBESAR */
+            .value-badge {
+                font-size: 0.85rem; /* Diperbesar dari 0.75rem */
+                padding: 8px 15px;
+            }
+            .facilities-grid {
+                gap: 12px;
+                font-size: 1rem; /* Diperbesar dari 0.9rem */
             }
             
             .navbar {
@@ -447,99 +376,62 @@
             }
 
             .video-play-button {
-                bottom: 80px;
-                width: 65px;
-                height: 65px;
+                bottom: 70px;
+                width: 50px;
+                height: 50px;
             }
 
             .video-play-text {
-                bottom: 55px;
-                font-size: 1.1rem; /* DIPERBESAR dari 0.8rem */
-            }
-
-            /* Tombol CTA LEBIH BESAR di mobile */
-            .cta-button {
-                font-size: 1.2rem; /* DIPERBESAR SIGNIFIKAN dari 0.85rem */
-                padding: 16px 35px;
-                margin: 15px 0;
-            }
-
-            /* Contact section font size adjustment - DIPERBESAR */
-            .contact-section h2 {
-                font-size: 2.5rem;
-            }
-            
-            .contact-section p {
-                font-size: 1.2rem;
-            }
-            
-            .contact-form input, .contact-form textarea {
-                font-size: 1.1rem;
-                padding: 16px;
-            }
-            
-            .contact-form input::placeholder, .contact-form textarea::placeholder {
-                font-size: 1.1rem;
-            }
-            
-            .contact-form button {
-                font-size: 1.2rem;
-                padding: 18px;
-            }
-
-            /* Text kecil di contact section */
-            .contact-section p:last-child {
-                font-size: 1rem;
+                bottom: 50px;
+                font-size: 0.8rem;
             }
         }
 
-        /* Perbaikan tambahan untuk layar yang sangat kecil */
-        @media only screen and (max-width: 480px) {
-            html {
-                font-size: 18px; /* Sedikit lebih kecil untuk layar sangat kecil tapi tetap besar */
-            }
-            
-            .content-box {
-                padding: 2.5rem 1.5rem;
-                margin: 1rem;
-            }
-            
-            .content-box h2 {
-                font-size: 2.4rem;
-            }
-            
-            .content-box p {
-                font-size: 1.15rem;
-            }
-            
-            .value-badge {
-                font-size: 1rem;
-            }
-            
-            .facility-item {
-                font-size: 1.1rem;
-            }
-
-            .cta-button {
-                font-size: 1.1rem;
-                padding: 14px 30px;
-            }
+        /* === VALUE BADGES === */
+        .value-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
         }
 
-        /* Untuk tablet (768px - 1024px) */
-        @media only screen and (min-width: 769px) and (max-width: 1024px) {
-            html {
-                font-size: 17px;
-            }
-            
-            .content-box h2 {
-                font-size: 2.3rem;
-            }
-            
-            .content-box p {
-                font-size: 1.05rem;
-            }
+        .value-badge {
+            background: rgba(201, 169, 97, 0.2);
+            border: 1px solid #c9a961;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: #c9a961;
         }
+
+        /* === HIGHLIGHT TEXT === */
+        .highlight {
+            color: #c9a961;
+            font-weight: 600;
+        }
+
+        /* === FACILITIES GRID === */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .facility-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .facility-item i {
+            color: #c9a961;
+            width: 20px;
+        }
+
     </style>
 </head>
 <body>
