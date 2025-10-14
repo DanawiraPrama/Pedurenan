@@ -46,15 +46,7 @@
             overflow: hidden;
         }
 
-        /* Untuk mobile - hilangkan fixed background */
-        @media only screen and (max-width: 768px) {
-            .parallax-section {
-                background-attachment: scroll;
-                background-position: center center !important;
-            }
-        }
-
-        /* Overlay gelap - DIPERKECIL TRANSPARANSINYA */
+        /* Overlay gelap */
         .parallax-section::before {
             content: '';
             position: absolute;
@@ -66,7 +58,7 @@
             z-index: 1;
         }
 
-        /* Kotak konten - DIPERKECIL dan DIPERJELAS */
+        /* Kotak konten */
         .content-box {
             position: relative;
             z-index: 2;
@@ -306,89 +298,6 @@
             color: #c9a961;
         }
 
-        /* === PARALLAX MOBILE ADVANCED === */
-        .parallax-mobile-bg {
-            display: none;
-        }
-
-        /* --- DIPERBESAR EKSTREM UNTUK MOBILE --- */
-        @media only screen and (max-width: 768px) {
-            .parallax-section {
-                background-attachment: scroll;
-                background-image: none !important;
-                position: relative;
-                padding: 1rem;
-            }
-            
-            .parallax-mobile-bg {
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-size: cover;
-                background-position: center;
-                z-index: 0;
-            }
-            
-            /* Kotak konten dibuat lebih besar dan jelas */
-            .content-box {
-                padding: 3rem 2.5rem; /* Padding diperbesar lagi */
-                margin: 1rem;
-                max-width: 95%; /* Lebar hampir penuh */
-            }
-            
-            /* Judul dibuat LEBIH BESAR LAGI */
-            .content-box h2 {
-                font-size: 2.8rem; /* Diperbesar signifikan dari 2.2rem */
-                line-height: 1.1; /* Sedikit kurangi line-height agar rapat */
-            }
-            
-            /* Paragraf dibuat LEBIH BESAR LAGI */
-            .content-box p {
-                font-size: 1.2rem; /* Diperbesar dari 1.1rem */
-                line-height: 1.6;
-            }
-
-            /* Badge dan fasilitas juga diperbesar lebih agresif */
-            .value-badges {
-                gap: 12px;
-            }
-            .value-badge {
-                font-size: 0.95rem; /* Diperbesar dari 0.85rem */
-                padding: 10px 18px;
-            }
-            .facilities-grid {
-                gap: 15px;
-                font-size: 1.1rem; /* Diperbesar dari 1rem */
-            }
-            
-            .navbar {
-                display: none;
-            }
-            
-            .video-modal-content iframe {
-                height: 300px;
-            }
-            
-            .close-video-modal {
-                top: -30px;
-                right: -10px;
-            }
-
-            .video-play-button {
-                bottom: 70px;
-                width: 50px;
-                height: 50px;
-            }
-
-            .video-play-text {
-                bottom: 50px;
-                font-size: 0.8rem;
-            }
-        }
-
         /* === VALUE BADGES === */
         .value-badges {
             display: flex;
@@ -434,6 +343,64 @@
             width: 20px;
         }
 
+        /* --- RESPONSIVE UNTUK MOBILE (DIPERBAIKI & DIPERBESAR) --- */
+        @media only screen and (max-width: 768px) {
+            /* Nonaktifkan parallax CSS di mobile untuk performa & stabilitas */
+            .parallax-section {
+                background-attachment: scroll;
+            }
+            
+            /* Perbesar komposisi font untuk mobile */
+            .content-box {
+                padding: 2.5rem 2rem;
+                margin: 1rem;
+                max-width: 95%;
+            }
+            
+            .content-box h2 {
+                font-size: 2.5rem; /* Ukuran yang lebih wajar tapi tetap besar */
+                line-height: 1.1;
+            }
+            
+            .content-box p {
+                font-size: 1.15rem; /* Paragraf juga diperbesar */
+                line-height: 1.6;
+            }
+
+            .value-badge {
+                font-size: 0.85rem;
+                padding: 8px 15px;
+            }
+
+            .facilities-grid {
+                font-size: 1rem;
+            }
+            
+            .navbar {
+                display: none;
+            }
+            
+            .video-modal-content iframe {
+                height: 300px;
+            }
+            
+            .close-video-modal {
+                top: -30px;
+                right: -10px;
+            }
+
+            .video-play-button {
+                bottom: 70px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .video-play-text {
+                bottom: 50px;
+                font-size: 0.8rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -450,8 +417,7 @@
     </nav>
 
     <!-- Section 1: Warisan Privasi -->
-    <section id="warisan" class="parallax-section" style="background-image: url('images/banner-exterior.png');">
-        <div class="parallax-mobile-bg" style="background-image: url('images/4.png');"></div>
+    <section id="warisan" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070');">
         <div class="content-box">
             <h2>Warisan Privasi Absolut</h2>
             <p>Di era privasi sebagai kemewahan tertinggi, properti ini adalah <span class="highlight">benteng pribadi dan simbol status</span> bagi keluarga eksklusif.</p>
@@ -473,8 +439,7 @@
     </section>
 
     <!-- Section 2: Spesifikasi Superior -->
-    <section id="spesifikasi" class="parallax-section" style="background-image: url('images/banner-security.jpg');">
-        <div class="parallax-mobile-bg" style="background-image: url('images/3.png');"></div>
+    <section id="spesifikasi" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');">
         <div class="content-box">
             <h2>Spesifikasi Tanpa Kompromi</h2>
             <p>Dibangun dengan standar tertinggi untuk mereka yang tidak menerima yang kedua terbaik.</p>
@@ -491,8 +456,7 @@
     </section>
 
     <!-- Section 3: Nilai Investasi -->
-    <section id="investasi" class="parallax-section" style="background-image: url('images/banner-livingroom.jpg');">
-        <div class="parallax-mobile-bg" style="background-image: url('images/2.png');"></div>
+    <section id="investasi" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070');">
         <div class="content-box">
             <h2>Investasi Masa Depan</h2>
             <p>Rp14 Miliar - penempatan aset strategis dengan <span class="highlight">prospek apresiasi eksponensial</span>.</p>
@@ -508,9 +472,8 @@
         </div>
     </section>
 
-    <!-- Section 4: BARU - Lokasi & Fasilitas -->
-    <section id="lokasi" class="parallax-section" style="background-image: url('images/banner-location.jpg');">
-        <div class="parallax-mobile-bg" style="background-image: url('images/1.png');"></div>
+    <!-- Section 4: Lokasi & Fasilitas -->
+    <section id="lokasi" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070');">
         <div class="content-box">
             <h2>Lokasi Strategis & Fasilitas</h2>
             <p>Pusat segala kemudahan dalam jangkauan, menawarkan <span class="highlight">keseimbangan sempurna</span> antara privasi dan aksesibilitas.</p>
@@ -554,8 +517,7 @@
     </section>
 
     <!-- Section 5: Kontak Eksklusif -->
-    <section id="kontak" class="parallax-section" style="background-image: url('images/banner-garden.jpg');">
-        <div class="parallax-mobile-bg" style="background-image: url('images/6.png');"></div>
+    <section id="kontak" class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070');">
         <div class="content-box">
             <h2>Ambil Langkah Eksklusif</h2>
             <p>Aset langka ini hanya ditawarkan kepada <span class="highlight">individu terpilih</span> dengan kapasitas finansial.</p>
@@ -598,38 +560,9 @@
     </div>
 
      <script>
-        // --- PARALLAX MOBILE & DESKTOP (OPTIMIZED & DIPERBAIKI) ---
-        const isMobile = window.innerWidth <= 768;
-        const parallaxElements = document.querySelectorAll('.parallax-section'); 
-        let ticking = false;
+        // --- JAVASCRIPT YANG SUDAH DIPERBAIKI & DISEDERHANAKAN ---
 
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            parallaxElements.forEach(element => {
-                const mobileBg = element.querySelector('.parallax-mobile-bg');
-                if (mobileBg) {
-                    const speed = 0.5;
-                    const yPos = -(scrolled * speed);
-                    mobileBg.style.backgroundPosition = `center ${yPos}px`;
-                }
-            });
-            ticking = false;
-        }
-
-        function requestTick() {
-            if (!ticking) {
-                window.requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }
-
-        if (isMobile) {
-            window.addEventListener('scroll', requestTick);
-        } else {
-            // Parallax desktop menggunakan CSS, tidak perlu JS
-        }
-
-        // === JAVASCRIPT UNTUK ANIMASI FADE-IN SAAT SCROLL ===
+        // === ANIMASI FADE-IN SAAT SCROLL ===
         const contentBoxes = document.querySelectorAll('.content-box');
         const isElementInView = (el) => {
             const rect = el.getBoundingClientRect();
@@ -645,7 +578,7 @@
         window.addEventListener('load', handleScrollAnimation);
         window.addEventListener('scroll', handleScrollAnimation);
 
-        // === JAVASCRIPT UNTUK VIDEO MODAL ===
+        // === VIDEO MODAL ===
         function openVideoModal() {
             document.getElementById('videoModal').style.display = 'flex';
             const iframe = document.querySelector('#videoModal iframe');
@@ -663,15 +596,14 @@
             }
         }
 
-        // === JAVASCRIPT UNTUK FORM KE WHATSAPP ===
+        // === FORM KE WHATSAPP (TYPO SUDAH DIPERBAIKI) ===
         document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const phoneNumber = "6281284942940"; 
             const name = document.querySelector('input[name="name"]').value;
             const email = document.querySelector('input[name="email"]').value;
-            const phone = document.querySelector('input[name="phone"]')..value; // Tambahkan phone
+            const phone = document.querySelector('input[name="phone"]').value; // PERBAIKAN: Hanya satu titik
             const message = document.querySelector('textarea[name="message"]').value;
-            // Format pesan disesuaikan
             const text = `Halo, saya tertarik dengan properti eksklusif Rp14 Miliar.%0A%0A` +
                           `Nama: ${name}%0A` +
                           `Email: ${email}%0A` +
@@ -681,7 +613,7 @@
             window.open(url, '_blank').focus();
         });
 
-        // === JAVASCRIPT UNTUK SMOOTH SCROLLING NAVIGASI ===
+        // === SMOOTH SCROLLING NAVIGASI ===
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
