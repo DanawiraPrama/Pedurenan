@@ -31,7 +31,7 @@
 
         /* === SECTION DENGAN PARALLAX === */
         .parallax-section {
-            height: 100vh;
+            min-height: 100vh;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -51,6 +51,7 @@
             .parallax-section {
                 background-attachment: scroll;
                 background-position: center center !important;
+                min-height: 100vh;
             }
         }
 
@@ -318,11 +319,12 @@
                 background-image: none !important;
                 position: relative;
                 padding: 1rem;
+                min-height: 100vh;
             }
             
             .parallax-mobile-bg {
                 display: block;
-                position: absolute;
+                position: fixed;
                 top: 0;
                 left: 0;
                 width: 100%;
@@ -330,6 +332,7 @@
                 background-size: cover;
                 background-position: center;
                 z-index: 0;
+                will-change: transform;
             }
             
             /* Kotak konten dibuat lebih besar dan jelas */
@@ -598,21 +601,37 @@
      <script>
         // --- PARALLAX MOBILE & DESKTOP (OPTIMIZED & DIPERBAIKI) ---
         const isMobile = window.innerWidth <= 768;
-        // PERBAIKAN: Sesuaikan class selector dengan HTML
         const parallaxElements = document.querySelectorAll('.parallax-section'); 
         let ticking = false;
+        let currentSection = 0;
+        const mobileBgs = document.querySelectorAll('.parallax-mobile-bg');
+        const sectionImages = [
+            'images/4.png',
+            'images/3.png',
+            'images/2.png',
+            'images/1.png',
+            'images/6.png'
+        ];
 
         function updateParallax() {
+            if (!isMobile) return;
+            
             const scrolled = window.pageYOffset;
-            parallaxElements.forEach(element => {
-                // PERBAIKAN: Sesuaikan class selector dengan HTML
-                const mobileBg = element.querySelector('.parallax-mobile-bg');
-                if (mobileBg) {
-                    const speed = 0.5;
-                    const yPos = -(scrolled * speed);
-                    mobileBg.style.backgroundPosition = `center ${yPos}px`;
-                }
-            });
+            const windowHeight = window.innerHeight;
+            
+            // Tentukan section yang sedang aktif
+            const newSection = Math.floor(scrolled / windowHeight);
+            
+            // Jika berpindah section, ganti background
+            if (newSection !== currentSection && newSection >= 0 && newSection < sectionImages.length) {
+                currentSection = newSection;
+                
+                // Update background untuk semua mobile bg elements
+                mobileBgs.forEach(bg => {
+                    bg.style.backgroundImage = `url('${sectionImages[currentSection]}')`;
+                });
+            }
+            
             ticking = false;
         }
 
@@ -624,9 +643,19 @@
         }
 
         if (isMobile) {
+            // Set initial background
+            if (mobileBgs.length > 0) {
+                mobileBgs[0].style.backgroundImage = `url('${sectionImages[0]}')`;
+            }
+            
             window.addEventListener('scroll', requestTick);
-        } else {
-            // Parallax desktop menggunakan CSS, tidak perlu JS
+            
+            // Handle orientation change
+            window.addEventListener('orientationchange', function() {
+                setTimeout(function() {
+                    updateParallax();
+                }, 100);
+            });
         }
 
         // === JAVASCRIPT UNTUK ANIMASI FADE-IN SAAT SCROLL ===
