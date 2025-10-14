@@ -574,87 +574,93 @@
         </div>
     </div>
 
-    <script>
-        // === PARALLAX EFFECT ===
-        function initParallax() {
-            const isMobile = window.innerWidth <= 768;
-            const parallaxSections = document.querySelectorAll('.parallax-section');
-            
-            if (isMobile) {
-                window.addEventListener('scroll', () => {
-                    const scrolled = window.pageYOffset;
-                    
-                    parallaxSections.forEach((section) => {
-                        const mobileBg = section.querySelector('.parallax-mobile-bg');
-                        if (mobileBg) {
-                            const speed = 0.3;
-                            const yPos = -(scrolled * speed);
-                            const sectionTop = section.offsetTop;
-                            const sectionHeight = section.offsetHeight;
-                            
-                            if (scrolled > sectionTop - window.innerHeight && scrolled < sectionTop + sectionHeight) {
-                                mobileBg.style.transform = `translateY(${yPos}px)`;
-                            }
-                        }
-                    });
-                });
-            } else {
-                parallaxSections.forEach(section => {
-                    section.style.backgroundAttachment = 'fixed';
-                });
+     <script>
+        // --- PARALLAX MOBILE & DESKTOP (OPTIMIZED) ---
+        const isMobile = window.innerWidth <= 768;
+        const parallaxElements = document.querySelectorAll('.fixed-section');
+        let ticking = false; // Flag untuk mencegah multiple requestAnimationFrame
+
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            parallaxElements.forEach(element => {
+                const mobileBg = element.querySelector('.bg-mobile');
+                if (mobileBg) {
+                    const speed = 0.5;
+                    const yPos = -(scrolled * speed);
+                    mobileBg.style.backgroundPosition = `center ${yPos}px`;
+                }
+            });
+            ticking = false; // Reset flag setelah update
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax); // Meminta browser untuk menjalankan animasi
+                ticking = true;
             }
         }
 
-        // === SCROLL ANIMATION ===
-        function initScrollAnimation() {
-            const contentBoxes = document.querySelectorAll('.content-box');
-            
-            const checkVisibility = () => {
-                contentBoxes.forEach(box => {
-                    const rect = box.getBoundingClientRect();
-                    const isVisible = (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0);
-                    
-                    if (isVisible) {
-                        box.classList.add('is-visible');
-                    }
-                });
-            };
-            
-            checkVisibility();
-            window.addEventListener('scroll', checkVisibility);
+        if (isMobile) {
+            window.addEventListener('scroll', requestTick);
+        } else {
+            parallaxElements.forEach(element => {
+                const desktopBg = element.querySelector('.bg-desktop');
+                if (desktopBg) {
+                    desktopBg.style.backgroundAttachment = 'fixed';
+                }
+            });
         }
 
-        // === VIDEO MODAL ===
+        // === JAVASCRIPT UNTUK ANIMASI FADE-IN SAAT SCROLL ===
+        const contentBoxes = document.querySelectorAll('.content-box');
+        const isElementInView = (el) => {
+            const rect = el.getBoundingClientRect();
+            return (rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth));
+        };
+        const handleScrollAnimation = () => {
+            contentBoxes.forEach(box => {
+                if (isElementInView(box)) {
+                    box.classList.add('is-visible');
+                }
+            });
+        };
+        window.addEventListener('load', handleScrollAnimation);
+        window.addEventListener('scroll', handleScrollAnimation);
+
+        // === JAVASCRIPT UNTUK VIDEO MODAL ===
         function openVideoModal() {
             document.getElementById('videoModal').style.display = 'flex';
+            const iframe = document.querySelector('#videoModal iframe');
+            iframe.src = iframe.src.replace('autoplay=0', 'autoplay=1');
         }
-
         function closeVideoModal() {
             document.getElementById('videoModal').style.display = 'none';
+            const iframe = document.querySelector('#videoModal iframe');
+            iframe.src = iframe.src.replace('autoplay=1', 'autoplay=0');
+        }
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeVideoModal();
+            }
         }
 
-        // === FORM KE WHATSAPP ===
+        // === JAVASCRIPT UNTUK FORM KE WHATSAPP ===
         document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const phoneNumber = "6281284942940"; 
             const name = document.querySelector('input[name="name"]').value;
             const email = document.querySelector('input[name="email"]').value;
-            const phone = document.querySelector('input[name="phone"]').value;
             const message = document.querySelector('textarea[name="message"]').value;
-            
-            const text = `Halo, saya tertarik dengan properti eksklusif Rp14 Miliar.%0A%0A` +
-                        `*Data Diri:*%0A` +
-                        `Nama: ${name}%0A` +
-                        `Email: ${email}%0A` +
-                        `WhatsApp: ${phone}%0A%0A` +
-                        `*Pertanyaan:*%0A` +
-                        `${message || 'Ingin private viewing'}`;
-            
+            const text = `Halo, saya tertarik dengan properti di Jalan Pedurenan No. 109.%0A%0A` +
+                          `Nama: ${name}%0A` +
+                          `Email: ${email}%0A` +
+                          `Pesan: ${message}`;
             const url = `https://wa.me/${phoneNumber}?text=${text}`;
-            window.open(url, '_blank');
+            window.open(url, '_blank').focus();
         });
 
-        // === SMOOTH SCROLL ===
+        // === JAVASCRIPT UNTUK SMOOTH SCROLLING NAVIGASI ===
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -667,21 +673,6 @@
                 }
             });
         });
-
-        // === INITIALIZE ===
-        document.addEventListener('DOMContentLoaded', function() {
-            initParallax();
-            initScrollAnimation();
-            window.addEventListener('resize', initParallax);
-        });
-
-        // Close modal ketika klik di luar
-        window.onclick = function(event) {
-            const modal = document.getElementById('videoModal');
-            if (event.target == modal) {
-                closeVideoModal();
-            }
-        }
 
     </script>
 </body>
