@@ -12,7 +12,38 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 💬 Floating Chat Bubble -->
+<a href="https://lime.n8n.co.id/webhook/e9525cf9-2c7f-4983-a03c-c01279977161/chat" 
+   target="_blank" 
+   id="chatBubble">
+  💬
+</a>
 
+<style>
+  #chatBubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366; /* warna hijau seperti WA */
+    color: white;
+    font-size: 26px;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 9999;
+  }
+  #chatBubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+  }
+</style>
     <style>
         /* === RESET & GLOBAL STYLES === */
         * {
