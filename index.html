@@ -618,6 +618,11 @@
         }
 
         /* === CHAT BUBBLE === */
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat Bubble - Properti Rumah</title>
+        <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+   
         :root {
             /* Tema Properti Rumah */
             --chat--color-primary: #2c5aa0;
@@ -662,6 +667,64 @@
             --chat--textarea--height: 48px;
             --chat--message--padding: 12px 16px;
             --chat--message--border-radius: 16px;
+        }
+
+        /* Custom positioning untuk floating button */
+        .n8n-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* Responsif untuk mobile */
+        @media (max-width: 768px) {
+            .n8n-chat {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            :root {
+                --chat--window--width: calc(100vw - 30px);
+                --chat--window--height: 70vh;
+            }
+        }
+
+        /* Soft shadow dan border */
+        .n8n-chat__window {
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Header dengan aksen biru properti */
+        .n8n-chat__header {
+            border-top: 3px solid #2c5aa0;
+        }
+
+        /* Input area styling */
+        .n8n-chat__input-container {
+            border-top: 1px solid #f0f0f0;
+            background: #fafafa;
+        }
+
+        /* Typing indicator */
+        .n8n-chat__typing-indicator span {
+            background-color: #2c5aa0 !important;
+            opacity: 0.6;
+        }
+        
+        /* Sembunyikan semua elemen credits/footer */
+        .n8n-chat__credits,
+        .n8n-chat__footer,
+        .n8n-chat [class*="credit"],
+        .n8n-chat [class*="powered"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
         /* Custom positioning untuk floating button */
@@ -1195,9 +1258,6 @@
     <!-- Container untuk chat bubble -->
     <div id="n8n-chat"></div>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script type="module">
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
         
@@ -1216,12 +1276,12 @@
             showWelcomeScreen: true,
             defaultLanguage: 'id',
             initialMessages: [
-                '"Halo! 👋 Saya Akbar, saya adalah asisten virtual untuk Rumah Peduranan. Senang bisa membantu Anda hari ini.'
+                'Perkenalkan, saya asisten virtual untuk informasi properti rumah.'
             ],
             i18n: {
                 id: {
-                    title: 'Assalamualaikum, Halo! 👋',
-                    subtitle: "Apa yang bisa saya bantu terkait properti Rumah Mewah di Jalan Pedurenan Depok, Cimanggis, Depok?",
+                    title: 'Halo! 👋',
+                    subtitle: "Ada yang bisa saya bantu terkait informasi properti rumah hari ini?",
                     footer: '',
                     getStarted: 'Percakapan Baru',
                     inputPlaceholder: 'Ketik pertanyaan Anda..',
