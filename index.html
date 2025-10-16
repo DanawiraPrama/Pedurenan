@@ -929,6 +929,115 @@
         display: block;
     }
 }
+
+        /* === IMAGE BOX STYLES === */
+.image-box-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 50px 0;
+}
+
+.image-box {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: var(--transition);
+    aspect-ratio: 4/3;
+}
+
+.image-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(201, 169, 97, 0.2);
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.image-box:hover img {
+    transform: scale(1.05);
+}
+
+.image-box-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    padding: 30px 20px 20px;
+    color: white;
+    transform: translateY(5px);
+    transition: var(--transition);
+}
+
+.image-box:hover .image-box-content {
+    transform: translateY(0);
+}
+
+.image-box-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.image-box-desc {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* Luxury Badge */
+.luxury-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Two Column Layout */
+.image-box-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.image-box-large {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    aspect-ratio: 16/9;
+}
+
+.image-box-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .image-box-two-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .image-box-grid {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
 </head>
 <body>
@@ -980,7 +1089,27 @@
                 <a href="#spesifikasi" class="btn btn-outline">Jelajahi Lebih Lanjut</a>
             </div>
         </div>
-        
+        <!-- TAMBAHKAN di Hero Section setelah hero-buttons: -->
+<div class="image-box-grid" style="margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));" data-aos="fade-up" data-aos-delay="400">
+    <div class="image-box" style="aspect-ratio: 1/1;">
+        <img src="images/icon-privasi.jpg" alt="Privasi Tinggi">
+        <div class="image-box-content">
+            <h3 class="image-box-title">Privasi</h3>
+        </div>
+    </div>
+    <div class="image-box" style="aspect-ratio: 1/1;">
+        <img src="images/icon-keamanan.jpg" alt="Keamanan Maximum">
+        <div class="image-box-content">
+            <h3 class="image-box-title">Keamanan</h3>
+        </div>
+    </div>
+    <div class="image-box" style="aspect-ratio: 1/1;">
+        <img src="images/icon-eksklusif.jpg" alt="Eksklusivitas">
+        <div class="image-box-content">
+            <h3 class="image-box-title">Eksklusif</h3>
+        </div>
+    </div>
+</div>
         <div class="video-play-button" onclick="openVideoModal()">
             <i class="fas fa-play"></i>
         </div>
@@ -1001,44 +1130,44 @@
                 <span class="value-badge">🛡️ 23 CCTV</span>
             </div>
             
-            <div class="facilities-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="facility-item">
-                    <div class="facility-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="facility-text">
-                        <h3 class="facility-title">Desain Eksklusif</h3>
-                        <p class="facility-desc">Rumah Ngantong dengan privasi maksimal</p>
-                    </div>
-                </div>
-                <div class="facility-item">
-                    <div class="facility-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="facility-text">
-                        <h3 class="facility-title">Keamanan Terpadu</h3>
-                        <p class="facility-desc">23 CCTV dengan sistem monitoring 24/7</p>
-                    </div>
-                </div>
-                <div class="facility-item">
-                    <div class="facility-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <div class="facility-text">
-                        <h3 class="facility-title">Carport Luas</h3>
-                        <p class="facility-desc">Kapasitas hingga 12 mobil</p>
-                    </div>
-                </div>
-                <div class="facility-item">
-                    <div class="facility-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="facility-text">
-                        <h3 class="facility-title">Ruang Kantor</h3>
-                        <p class="facility-desc">Ruang kantor eksekutif pribadi</p>
-                    </div>
-                </div>
-            </div>
+           <!-- GANTI facilities-grid di Spesifikasi Section dengan ini: -->
+<div class="image-box-grid" data-aos="fade-up" data-aos-delay="200">
+    <div class="image-box">
+        <div class="luxury-badge">PREMIUM</div>
+        <img src="images/desain-eksterior.jpg" alt="Desain Eksterior Eksklusif">
+        <div class="image-box-content">
+            <h3 class="image-box-title">Desain Arsitektur</h3>
+            <p class="image-box-desc">Konsep "Rumah Ngantong" dengan privasi maksimal dan estetika modern</p>
+        </div>
+    </div>
+    
+    <div class="image-box">
+        <div class="luxury-badge">SECURITY</div>
+        <img src="images/sistem-keamanan.jpg" alt="Sistem Keamanan Terpadu">
+        <div class="image-box-content">
+            <h3 class="image-box-title">Keamanan 24/7</h3>
+            <p class="image-box-desc">23 CCTV dengan monitoring real-time dan sistem akses terintegrasi</p>
+        </div>
+    </div>
+    
+    <div class="image-box">
+        <div class="luxury-badge">SPACE</div>
+        <img src="images/carport-luas.jpg" alt="Carport Luas">
+        <div class="image-box-content">
+            <h3 class="image-box-title">Area Parkir Eksklusif</h3>
+            <p class="image-box-desc">Kapasitas hingga 12 mobil dengan desain yang elegan</p>
+        </div>
+    </div>
+    
+    <div class="image-box">
+        <div class="luxury-badge">EXECUTIVE</div>
+        <img src="images/ruang-kantor.jpg" alt="Ruang Kantor Eksekutif">
+        <div class="image-box-content">
+            <h3 class="image-box-title">Home Office</h3>
+            <p class="image-box-desc">Ruang kerja eksekutif dengan fasilitas meeting private</p>
+        </div>
+    </div>
+</div>
             
             <div class="text-center" data-aos="fade-up" data-aos-delay="300">
                 <p><strong>Fitur Premium:</strong> Plafon 4.5m, sistem keamanan lengkap, carport 12+ mobil, ruang kantor eksekutif.</p>
@@ -1149,7 +1278,21 @@
                     </div>
                 </div>
             </div>
-            
+            <!-- TAMBAHKAN setelah facilities-grid di Investasi Section: -->
+<div class="image-box-two-col" data-aos="fade-up" data-aos-delay="300">
+    <div class="image-box-large">
+        <img src="images/investasi-visual.jpg" alt="Visualisasi Investasi Properti">
+    </div>
+    <div>
+        <h3 style="margin-bottom: 20px; color: var(--primary-color);">Potensi Apresiasi Eksklusif</h3>
+        <p>Dengan perkembangan infrastruktur di area Cimanggis, properti ini memiliki prospek apresiasi hingga <strong>15% per tahun</strong>. Lokasi strategis dan kelangkaan properti sejenis menjadikannya aset bernilai tinggi.</p>
+        <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
+            <span class="value-badge">📈 ROI Tinggi</span>
+            <span class="value-badge">🏗️ Infrastruktur</span>
+            <span class="value-badge">💎 Kelangkaan</span>
+        </div>
+    </div>
+</div>
             <div class="text-center" data-aos="fade-up" data-aos-delay="300">
                 <p><strong>Lokasi Emas:</strong> 2km Tol Cibubur, 1.7km Tol Cijago, 3km LRT Harjamukti.</p>
                 <a href="#kontak" class="btn btn-primary" style="margin-top: 20px;">Konsultasi Investasi</a>
@@ -1170,7 +1313,21 @@
                 <span class="value-badge">🛣️ Akses Mudah</span>
                 <span class="value-badge">🏬 Fasilitas Lengkap</span>
             </div>
-
+            <!-- TAMBAHKAN sebelum facilities-grid di Lokasi Section: -->
+<div class="image-box-two-col" data-aos="fade-up" data-aos-delay="150">
+    <div>
+        <h3 style="margin-bottom: 20px; color: var(--primary-color);">Lokasi Emas di Pusat Perkembangan</h3>
+        <p>Strategis di jantung Cimanggis dengan akses mudah ke berbagai fasilitas premium. Hanya <strong>2km dari Tol Cibubur</strong> dan <strong>3km dari LRT Harjamukti</strong>.</p>
+        <div style="margin-top: 25px;">
+            <a href="https://maps.app.goo.gl/eCY6Vqka1oR5A5Qq8" target="_blank" class="btn btn-outline" style="margin-top: 10px;">
+                <i class="fas fa-map-marker-alt"></i> Lihat di Google Maps
+            </a>
+        </div>
+    </div>
+    <div class="image-box-large">
+        <img src="images/peta-lokasi.jpg" alt="Peta Lokasi Strategis">
+    </div>
+</div>
             <div class="facilities-grid" data-aos="fade-up" data-aos-delay="200">
                 <div class="facility-item">
                     <div class="facility-icon">
