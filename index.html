@@ -867,6 +867,68 @@
                 max-width: 300px;
             }
         }
+
+        /* === IMAGE GALLERY - SWIPE VERSION === */
+.gallery-container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    touch-action: pan-y pinch-zoom;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.gallery-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.gallery-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    flex-shrink: 0;
+}
+
+.gallery-slide.active {
+    opacity: 1;
+    position: relative;
+}
+
+.gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* Swipe instruction for mobile */
+.swipe-hint {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    text-align: center;
+    z-index: 2;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .swipe-hint {
+        display: block;
+    }
+}
     </style>
 </head>
 <body>
@@ -984,39 +1046,44 @@
             </div>
         </div>
     </section>
-
-   <!-- Gallery Section -->
-<section class="gallery-section">
+<!--Galeri Section -->
+   <section class="gallery-section">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">Galeri Properti</h2>
             <p class="section-subtitle">Lihat keindahan dan kemewahan properti eksklusif ini</p>
         </div>
         
-        <div class="gallery-container" data-aos="fade-up" data-aos-delay="100">
-            <!-- SLIDE 1 - Ganti URL gambar di sini -->
-            <div class="gallery-slide active">
-                <img src="images/banner-exterior.png" alt="Eksterior Properti">
+        <div class="gallery-container" data-aos="fade-up" data-aos-delay="100" id="galleryContainer">
+            <div class="gallery-slides">
+                <!-- SLIDE 1 -->
+                <div class="gallery-slide active">
+                    <img src="images/banner-exterior.png" alt="Eksterior Properti">
+                </div>
+                
+                <!-- SLIDE 2 -->
+                <div class="gallery-slide">
+                    <img src="images/banner-livingroom.png" alt="Living Room Mewah">
+                </div>
+                
+                <!-- SLIDE 3 -->
+                <div class="gallery-slide">
+                    <img src="images/banner-garden.png" alt="Taman Pribadi">
+                </div>
+                
+                <!-- SLIDE 4 -->
+                <div class="gallery-slide">
+                    <img src="images/banner-location.jpg" alt="Lokasi Strategis">
+                </div>
+                
+                <!-- SLIDE 5 -->
+                <div class="gallery-slide">
+                    <img src="images/banner-taman.png" alt="Taman Belakang">
+                </div>
             </div>
             
-            <!-- SLIDE 2 - Ganti URL gambar di sini -->
-            <div class="gallery-slide">
-                <img src="images/banner-livingroom.jpg" alt="Sistem Keamanan">
-            </div>
-            
-            <!-- SLIDE 3 - Ganti URL gambar di sini -->
-            <div class="gallery-slide">
-                <img src="images/banner-garden.jpg" alt="Interior Mewah">
-            </div>
-            
-            <!-- SLIDE 4 - Ganti URL gambar di sini -->
-            <div class="gallery-slide">
-                <img src="images/banner-location.jpg" alt="Lokasi Strategis">
-            </div>
-            
-            <!-- SLIDE 5 - Ganti URL gambar di sini -->
-            <div class="gallery-slide">
-                <img src="images/banner-taman.jpg" alt="Taman Pribadi">
+            <div class="swipe-hint">
+                <i class="fas fa-arrows-left-right"></i> Geser dengan jari untuk melihat lebih banyak
             </div>
             
             <div class="gallery-controls">
@@ -1418,6 +1485,76 @@
                 }
             });
         });
+        // Gallery Swipe Functionality
+const galleryContainer = document.getElementById('galleryContainer');
+let startX = 0;
+let currentX = 0;
+let isSwiping = false;
+
+galleryContainer.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+});
+
+galleryContainer.addEventListener('touchmove', (e) => {
+    if (!isSwiping) return;
+    currentX = e.touches[0].clientX;
+});
+
+galleryContainer.addEventListener('touchend', () => {
+    if (!isSwiping) return;
+    
+    const diff = startX - currentX;
+    const swipeThreshold = 50;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            // Swipe left - next slide
+            const nextSlide = (currentSlide + 1) % gallerySlides.length;
+            showSlide(nextSlide);
+        } else {
+            // Swipe right - previous slide
+            const prevSlide = (currentSlide - 1 + gallerySlides.length) % gallerySlides.length;
+            showSlide(prevSlide);
+        }
+    }
+    
+    isSwiping = false;
+});
+
+// Mouse drag support for desktop
+galleryContainer.addEventListener('mousedown', (e) => {
+    startX = e.clientX;
+    isSwiping = true;
+});
+
+galleryContainer.addEventListener('mousemove', (e) => {
+    if (!isSwiping) return;
+    currentX = e.clientX;
+});
+
+galleryContainer.addEventListener('mouseup', () => {
+    if (!isSwiping) return;
+    
+    const diff = startX - currentX;
+    const swipeThreshold = 50;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            const nextSlide = (currentSlide + 1) % gallerySlides.length;
+            showSlide(nextSlide);
+        } else {
+            const prevSlide = (currentSlide - 1 + gallerySlides.length) % gallerySlides.length;
+            showSlide(prevSlide);
+        }
+    }
+    
+    isSwiping = false;
+});
+
+galleryContainer.addEventListener('mouseleave', () => {
+    isSwiping = false;
+});
     </script>
 </body>
 </html>
