@@ -158,13 +158,14 @@
 
         /* === HERO SECTION === */
         .hero-section {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 120px; /* Tambahkan padding bawah */
+}
 
         .hero-background {
             position: absolute;
@@ -202,11 +203,12 @@
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 0 20px;
-            text-align: center;
-            z-index: 2;
-        }
+    max-width: 800px;
+    padding: 0 20px;
+    text-align: center;
+    z-index: 2;
+    margin-bottom: 40px; /* Beri margin bawah */
+}
 
         .hero-title {
             font-family: 'Playfair Display', serif;
@@ -267,23 +269,23 @@
             transform: translateY(-3px);
         }
 
-        .video-play-button {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
-            background-color: rgba(201, 169, 97, 0.9);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: var(--transition);
-            z-index: 2;
-        }
-
+       /* Video button positioning fix */
+.video-play-button {
+    position: absolute;
+    bottom: 40px; /* Kurangi dari 80px ke 40px */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(201, 169, 97, 0.9);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 2;
+}
         .video-play-button:hover {
             background-color: var(--light-color);
             transform: translateX(-50%) scale(1.1);
@@ -296,17 +298,18 @@
         }
 
         .video-play-text {
-            position: absolute;
-            bottom: 55px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Playfair Display', serif;
-            font-size: 0.9rem;
-            color: var(--light-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            z-index: 2;
-        }
+    position: absolute;
+    bottom: 15px; /* Kurangi dari 55px ke 15px */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    color: var(--light-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 2;
+}
+
 
         /* === SECTIONS === */
         .section {
@@ -1043,7 +1046,7 @@
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 40px 0 0 0;
+    margin: 30px 0 40px 0;
     flex-wrap: wrap;
 }
 
@@ -1100,7 +1103,7 @@
 @media (max-width: 768px) {
     .hero-features {
         gap: 15px;
-        margin: 30px 0 0 0;
+        margin: 30px 0 30px 0; /* UBAH: dari 30px 0 0 0 jadi 30px 0 30px 0 */
     }
     
     .hero-feature {
@@ -1132,12 +1135,30 @@
     .hero-features {
         flex-direction: column;
         gap: 10px;
+        margin: 25px 0 25px 0; /* TAMBAH: margin atas-bawah */
     }
     
     .hero-feature {
         width: 100%;
         max-width: 280px;
         margin: 0 auto;
+    }
+}
+        /* Responsive video button positioning */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-bottom: 100px; /* TAMBAH: padding bawah untuk mobile */
+    }
+    
+    .video-play-button {
+        bottom: 30px; /* UBAH: posisi lebih rendah di mobile */
+        width: 50px;
+        height: 50px;
+    }
+    
+    .video-play-text {
+        bottom: 10px; /* UBAH: posisi lebih rendah di mobile */
+        font-size: 0.8rem;
     }
 }
     </style>
@@ -1165,7 +1186,7 @@
         </div>
     </nav>
 
-   <!-- Hero Section -->
+  <!-- Hero Section -->
 <section class="hero-section" id="warisan">
     <div class="hero-background">
         <!-- Placeholder untuk gambar properti -->
@@ -1174,6 +1195,7 @@
         </div>
     </div>
     <div class="hero-overlay"></div>
+    
     <div class="hero-content" data-aos="fade-up">
         <h1 class="hero-title">Warisan Privasi Absolut</h1>
         <p class="hero-subtitle">Di era privasi sebagai kemewahan tertinggi, properti ini adalah <span class="highlight">benteng pribadi dan simbol status</span> bagi keluarga eksklusif.</p>
@@ -1185,13 +1207,13 @@
         </div>
         
         <p><strong>Desain "Rumah Ngantong":</strong> Sempurna untuk pejabat & pengusaha yang menghargai privasi.</p>
-        <br><br>
+        
         <div class="hero-buttons">
             <a href="https://wa.me/6281284942940?text=Halo,%20saya%20tertarik%20dengan%20Warisan%20Privasi%20di%20Jalan%20Pedurenan%20No.%20109.%20Mohon%20info%20lebih%20lanjut." class="btn btn-primary">Private Viewing Eksklusif</a>
             <a href="#spesifikasi" class="btn btn-outline">Jelajahi Lebih Lanjut</a>
         </div>
 
-        <!-- INI YANG DITAMBAHKAN - HERO FEATURES -->
+        <!-- HERO FEATURES -->
         <div class="hero-features" data-aos="fade-up" data-aos-delay="400">
             <div class="hero-feature">
                 <div class="hero-feature-icon">
@@ -1222,9 +1244,8 @@
             </div>
         </div>
     </div>
-    <div style="height: 40px;"></div>
     
-     <!-- PINDAHKAN video button di luar hero-content -->
+    <!-- VIDEO BUTTON DI LUAR CONTENT -->
     <div class="video-play-button" onclick="openVideoModal()">
         <i class="fas fa-play"></i>
     </div>
