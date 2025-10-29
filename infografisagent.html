@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis Analisis Proyek Properti</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#0A2463',
+                        'bright-blue': '#3E92CC',
+                        'bright-yellow': '#FFF275',
+                        'light-gray': '#F8F9FA',
+                        'dark-text': '#212121',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body class="bg-light-gray font-sans text-dark-text">
+
+    <main class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
+                Analisis Lini Masa: Mengungkap Jejak Pengembang Properti
+            </h1>
+            <p class="text-lg md:text-xl text-dark-text max-w-4xl mx-auto">
+                Sebuah tinjauan analitis terhadap delapan proyek residensial di Bekasi dan Depok, mengidentifikasi dua strategi pengembang yang berbeda dan membedakan antara proyek nyata dengan anomali data.
+            </p>
+        </header>
+
+        <section class="mb-12 md:mb-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <span class="text-5xl font-bold text-bright-blue block">8</span>
+                    <span class="text-lg text-deep-blue mt-2 block">Proyek Dianalisis</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <span class="text-5xl font-bold text-bright-blue block">2</span>
+                    <span class="text-lg text-deep-blue mt-2 block">Pengembang Utama</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <span class="text-5xl font-bold text-bright-blue block">3</span>
+                    <span class="text-lg text-deep-blue mt-2 block">Lokasi Inti</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <span class="text-5xl font-bold text-red-600 block">2</span>
+                    <span class="text-lg text-deep-blue mt-2 block">Anomali Data</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 md:mb-16 items-center">
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <h2 class="text-3xl font-bold text-deep-blue mb-4">Dua Jejak Pengembang</h2>
+                <p class="text-base md:text-lg text-dark-text mb-4">
+                    Analisis mendalam mengidentifikasi dua jejak pengembang yang jelas dan terpisah di antara enam proyek yang valid. Masing-masing memiliki fokus geografis dan lini masa yang berbeda, mewakili strategi pasar yang unik.
+                </p>
+                <p class="text-base md:text-lg text-dark-text">
+                    Grafik donat di samping ini mengilustrasikan pembagian portofolio proyek yang dianalisis secara merata antara "Arya Town House", yang berfokus di Jatisampurna, dan "PT ARAZ PROPERTY", yang berekspansi di Jatiasih dan Tapos.
+                </p>
+            </div>
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-md">
+                <div class="chart-container max-w-md h-64 md:h-80 max-h-80">
+                    <canvas id="developerDonutChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12 md:mb-16">
+            <h2 class="text-3xl font-bold text-deep-blue mb-4">Visualisasi Lini Masa Konstruksi</h2>
+            <p class="text-base md:text-lg text-dark-text mb-6 max-w-5xl">
+                Meskipun tanggal mulai sulit dipastikan, estimasi periode konstruksi dapat divisualisasikan. Bagan ini menunjukkan durasi proyek dari perkiraan mulai hingga selesai, menyoroti strategi berurutan "Arya Town House" dan ekspansi cepat "PT ARAZ PROPERTY".
+            </p>
+            <div class="chart-container w-full h-96 md:h-[500px] max-h-[500px]">
+                <canvas id="timelineGanttChart"></canvas>
+            </div>
+            <p class="text-sm text-gray-600 mt-4 text-center">
+                *Proyek "De Araz Residence (Depok)" ditampilkan sebagai sedang berlangsung (ongoing) per Q2 2024.
+            </p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 md:mb-16 items-center">
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-md order-2 md:order-1">
+                <div class="chart-container max-w-lg h-80 max-h-80">
+                    <canvas id="locationBarChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-md order-1 md:order-2">
+                <h2 class="text-3xl font-bold text-deep-blue mb-4">Analisis Geografis</h2>
+                <p class="text-base md:text-lg text-dark-text mb-4">
+                    Distribusi geografis proyek menegaskan strategi fokus pengembang. Setiap pengembang mengukir ceruk pasarnya sendiri di lokasi yang berbeda.
+                </p>
+                <p class="text-base md:text-lg text-dark-text">
+                    Bagan batang ini menunjukkan konsentrasi tinggi proyek "Arya Town House" secara eksklusif di Jatisampurna, sementara "PT ARAZ PROPERTY" membagi fokusnya antara Jatiasih dan ekspansi barunya di Tapos.
+                </p>
+            </div>
+        </section>
+        
+        <section class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-900 p-6 md:p-8 rounded-lg shadow-md mb-12 md:mb-16">
+            <h2 class="text-3xl font-bold text-deep-blue mb-4">Temuan Anomali Data</h2>
+            <p class="text-base md:text-lg mb-2">
+                Bagian penting dari analisis adalah memvalidasi data. Investigasi menemukan bahwa kueri untuk "Cluster Cikunir 3 Unit" dan "Cluster Cikunir 7 Unit" merupakan anomali.
+            </p>
+            <p class="text-base md:text-lg font-semibold">
+                Data ini tidak merujuk pada proyek spesifik dengan jumlah unit tersebut, melainkan pada dinamika pembangunan skala makro dan kebisingan pasar umum di area Cikunir, sehingga dikecualikan dari analisis inti.
+            </p>
+        </section>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <h2 class="text-3xl font-bold text-deep-blue mb-4">Kesimpulan Analitis</h2>
+            <p class="text-lg text-dark-text max-w-4xl mx-auto">
+                Analisis ini berhasil menembus data publik yang terfragmentasi untuk mengidentifikasi lini masa konstruksi dan dua jejak pengembang yang berbeda. Temuan ini memberikan kejelasan strategis mengenai lanskap pembangunan di Jatisampurna, Jatiasih, dan Tapos.
+            </p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            function processLabel(label) {
+                if (typeof label === 'string' && label.length > 16) {
+                    const words = label.split(' ');
+                    let lines = [];
+                    let currentLine = '';
+                    for (const word of words) {
+                        if ((currentLine + ' ' + word).trim().length > 16) {
+                            if (currentLine.length > 0) {
+                                lines.push(currentLine.trim());
+                            }
+                            currentLine = word;
+                        } else {
+                            currentLine = (currentLine + ' ' + word).trim();
+                        }
+                    }
+                    if (currentLine.length > 0) {
+                        lines.push(currentLine.trim());
+                    }
+                    return lines;
+                }
+                return label;
+            }
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                if (!item) return '';
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+
+            const commonPlugins = {
+                legend: {
+                    labels: {
+                        color: '#212121',
+                        font: {
+                            size: 14,
+                            family: 'Inter, sans-serif'
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    titleFont: {
+                        size: 14,
+                        family: 'Inter, sans-serif'
+                    },
+                    bodyFont: {
+                        size: 12,
+                        family: 'Inter, sans-serif'
+                    }
+                }
+            };
+            
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: commonPlugins,
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#212121',
+                            font: { family: 'Inter, sans-serif' }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#212121',
+                            font: { family: 'Inter, sans-serif' }
+                        },
+                        grid: {
+                            color: '#E0E0E0'
+                        }
+                    }
+                }
+            };
+
+            const developerDonutCtx = document.getElementById('developerDonutChart');
+            if (developerDonutCtx) {
+                new Chart(developerDonutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            processLabel('Arya Town House'), 
+                            processLabel('PT ARAZ PROPERTY')
+                        ],
+                        datasets: [{
+                            label: 'Jumlah Proyek',
+                            data: [3, 3],
+                            backgroundColor: [
+                                '#0A2463',
+                                '#3E92CC'
+                            ],
+                            borderColor: '#FFFFFF',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            ...commonPlugins,
+                            legend: {
+                                ...commonPlugins.legend,
+                                position: 'bottom',
+                            }
+                        },
+                        cutout: '60%'
+                    }
+                });
+            }
+
+            const timelineGanttCtx = document.getElementById('timelineGanttChart');
+            if (timelineGanttCtx) {
+                const ganttLabels = [
+                    'Arya Town House 1',
+                    'Arya Town House 2',
+                    'Arya Town House 3',
+                    'De Azra Residence 1',
+                    'De Azra Residence 2',
+                    'De Araz Residence'
+                ];
+
+                new Chart(timelineGanttCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ganttLabels.map(processLabel),
+                        datasets: [{
+                            label: 'Lini Masa Proyek',
+                            data: [
+                                ['2017-10-01', '2018-12-31'], 
+                                ['2019-01-01', '2019-12-31'], 
+                                ['2020-01-01', '2021-12-31'], 
+                                ['2022-04-01', '2023-03-31'], 
+                                ['2023-04-01', '2024-03-31'], 
+                                ['2023-07-01', '2024-06-30']  
+                            ],
+                            backgroundColor: '#3E92CC',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            ...commonPlugins,
+                            tooltip: {
+                                ...commonPlugins.tooltip,
+                                callbacks: {
+                                    ...commonPlugins.tooltip.callbacks,
+                                    label: (context) => {
+                                        const d = context.raw;
+                                        const start = new Date(d[0]).toLocaleDateString('id-ID', { month: 'short', year: 'numeric' });
+                                        const end = new Date(d[1]).toLocaleDateString('id-ID', { month: 'short', year: 'numeric' });
+                                        return `${start} - ${end}`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    unit: 'quarter',
+                                    tooltipFormat: 'MMM yyyy'
+                                },
+                                min: '2017-01-01',
+                                max: '2025-01-01',
+                                ticks: {
+                                    color: '#212121',
+                                    font: { family: 'Inter, sans-serif' }
+                                },
+                                grid: {
+                                    color: '#E0E0E0'
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#212121',
+                                    font: { family: 'Inter, sans-serif' },
+                                    autoSkip: false
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const locationBarCtx = document.getElementById('locationBarChart');
+            if (locationBarCtx) {
+                new Chart(locationBarCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jatisampurna', 'Jatiasih', 'Tapos'],
+                        datasets: [{
+                            label: 'Jumlah Proyek',
+                            data: [3, 2, 1],
+                            backgroundColor: '#3E92CC',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        ...commonOptions,
+                        plugins: {
+                            ...commonPlugins,
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            ...commonOptions.scales,
+                            y: {
+                                ...commonOptions.scales.y,
+                                beginAtZero: true,
+                                ticks: {
+                                    ...commonOptions.scales.y.ticks,
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
