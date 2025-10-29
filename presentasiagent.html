@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Rekrutmen Agen Properti</title>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Menggunakan font Inter dari Tailwind default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Membuat container scroll-snap */
+        .snap-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        /* Membuat setiap 'slide' menjadi titik snap */
+        .snap-slide {
+            scroll-snap-align: start;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 2.5rem; /* padding 40px */
+            position: relative;
+        }
+        /* Helper untuk panah 'scroll down' */
+        .scroll-arrow {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-hidden">
+
+    <main class="snap-container">
+
+        <!-- Slide 1: Judul / Pembuka -->
+        <section class="snap-slide text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/222/FFF?text=Properti+Modern');">
+            <!--  -->
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
+                Lebih dari Sekadar Menjual
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-light text-cyan-300">
+                Bangun Karier Anda Bersama Pengembang Properti Terdepan
+            </h2>
+            <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl">
+                Peluang Kemitraan Strategis di Jantung Pertumbuhan Properti Bekasi & Depok.
+            </p>
+            <div class="scroll-arrow text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Slide 2: Peluang Pasar ("Mengapa Sekarang?") -->
+        <section class="snap-slide bg-gray-800">
+            <div class="text-center max-w-4xl">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-cyan-300">Pasar Properti Sedang <span class="text-white">Meledak</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-4">
+                    Koridor Timur & Selatan Jakarta (Bekasi & Depok) adalah episentrum permintaan baru, didorong oleh infrastruktur masif (Tol & LRT) dan laju kelas menengah.
+                </p>
+                <p class="text-xl md:text-2xl font-semibold text-white mt-8">
+                    Anda berada di tempat yang tepat, pada waktu yang tepat.
+                </p>
+                <!--  -->
+                <img src="https://placehold.co/600x300/374151/E0F2FE?text=Grafik+Pertumbuhan+Bekasi+%26+Depok" alt="Grafik Pertumbuhan" class="mt-8 rounded-lg shadow-xl mx-auto opacity-70">
+            </div>
+            <div class="scroll-arrow text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Slide 3: Masalah ("Noise" vs "Signal") -->
+        <section class="snap-slide bg-gray-900">
+            <div class="text-center max-w-4xl">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Tantangan Agen: Terlalu Banyak <span class="text-red-400">'Kebisingan'</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-4">
+                    Pasar dipenuhi proyek 'hantu', data tidak jelas, dan info properti yang menyesatkan (seperti anomali Cikunir). Waktu Anda terbuang sia-sia untuk memverifikasi, bukan menjual.
+                </p>
+                <div class="h-1 w-24 bg-cyan-300 mx-auto my-8"></div>
+                <h3 class="text-2xl md:text-3xl font-semibold text-white">
+                    Solusi Kami: <span class="text-cyan-300">Sinyal yang Jelas</span>
+                </h3>
+                <p class="text-lg md:text-xl text-gray-300 mt-4">
+                    Kami telah melakukan riset mendalam. Kami bermitra HANYA dengan pengembang terverifikasi.
+                </p>
+                <p class="text-xl md:text-2xl font-bold text-white mt-6 bg-cyan-800 p-4 rounded-lg">
+                    Anda bisa fokus 100% untuk MENJUAL.
+                </p>
+            </div>
+            <div class="scroll-arrow text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Slide 4: Dua Mitra Pengembang -->
+        <section class="snap-slide bg-gray-800">
+            <div class="w-full max-w-6xl">
+                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">
+                    Dua DNA Sukses. Satu Portofolio <span class="text-cyan-300">Unggul</span>.
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Kolom 1: Arya Town House -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border border-gray-700">
+                        <h3 class="text-3xl font-bold mb-2">Arya Town House</h3>
+                        <p class="text-xl font-light text-cyan-300 mb-4">(Sang Maestro)</p>
+                        <p class="text-gray-300 mb-4">Spesialisasi mendalam di <span class="font-semibold text-white">Jatisampurna, Bekasi</span>. Rekam jejak terbukti sejak 2017.</p>
+                        <ul class="space-y-2 text-lg">
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✔</span> Menjual <span class="font-bold text-white ml-1">Stabilitas & Reputasi</span></li>
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✔</span> Pasar sekunder (resale/sewa) aktif.</li>
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✔</span> Peluang kemitraan jangka panjang.</li>
+                        </ul>
+                    </div>
+                    <!-- Kolom 2: PT ARAZ PROPERTY -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border border-gray-700">
+                        <h3 class="text-3xl font-bold mb-2">PT ARAZ PROPERTY</h3>
+                        <p class="text-xl font-light text-cyan-300 mb-4">(Mesin Pertumbuhan)</p>
+                        <p class="text-gray-300 mb-4">Ekspansi cepat & strategis di <span class="font-semibold text-white">Jatiasih & Tapos, Depok</span>. Aktif sejak 2022.</p>
+                         <ul class="space-y-2 text-lg">
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✔</span> Menjual <span class="font-bold text-white ml-1">Kecepatan & Momentum</span></li>
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✔</span> Fokus pada unit "Siap Huni".</li>
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✔</span> Aliran komisi cepat & stok baru.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-arrow text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Slide 5: Manfaat untuk Agen (WIIFM) -->
+        <section class="snap-slide bg-gray-900">
+            <div class="text-center max-w-4xl">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8">Mengapa Ini <span class="text-cyan-300">Penting</span> Untuk Anda?</h2>
+                <div class="space-y-6 text-left">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">1. Layani SEMUA Klien</h3>
+                        <p class="text-lg text-gray-300">Tawarkan properti <span class="font-bold text-white">stabil (Arya TH)</span> untuk investor & properti <span class="font-bold text-white">pertumbuhan cepat (PT ARAZ)</span> untuk pembeli rumah pertama. Anda punya jawaban untuk semua.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">2. Aliran Komisi Ganda</h3>
+                        <p class="text-lg text-gray-300">Dapatkan <span class="font-bold text-white">komisi cepat</span> dari unit "Siap Huni" (PT ARAZ) sambil membangun <span class="font-bold text-white">pendapatan jangka panjang</span> dari resale & sewa (Arya TH).</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">3. Kredibilitas Instan</h3>
+                        <p class="text-lg text-gray-300">Anda tidak menjual properti acak. Anda menjual proyek dari pengembang terverifikasi dengan rekam jejak yang solid. <span class="font-bold text-white">Tutup transaksi lebih mudah.</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-arrow text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Slide 6: Inventaris "Siap Jual" -->
+        <section class="snap-slide bg-gray-800">
+            <div class="w-full max-w-6xl text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-12">
+                    Portofolio <span class="text-cyan-300">"Siap Jual"</span> Anda Hari Ini
+                </h2>
+                <!--  -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Kartu 1 -->
+                    <div class="bg-gray-900 p-6 rounded-xl shadow-2xl border border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x200/111827/FFF?text=De+Araz+Residence" alt="De Araz Residence" class="rounded-md mb-4 mx-auto">
+                        <h3 class="text-2xl font-bold text-cyan-300">De Araz Residence</h3>
+                        <p class="text-lg text-white font-semibold">Tapos, Depok</p>
+                        <p class="text-gray-300 mt-2">Status: <span class="font-bold text-white">Cluster Baru!</span></p>
+                        <p class="text-lg text-white font-bold mt-2">Sisa 7 Unit!</p>
+                    </div>
+                    <!-- Kartu 2 -->
+                    <div class="bg-gray-900 p-6 rounded-xl shadow-2xl border border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x200/111827/FFF?text=De+Azra+Residence" alt="De Azra Residence" class="rounded-md mb-4 mx-auto">
+                        <h3 class="text-2xl font-bold text-cyan-300">De Azra Residence 1 & 2</h3>
+                        <p class="text-lg text-white font-semibold">Jatiasih, Bekasi</p>
+                        <p class="text-gray-300 mt-2">Status: <span class="font-bold text-white">Siap Huni!</span></p>
+                        <p class="text-lg text-white font-bold mt-2">Sisa 11+ Unit!</p>
+                    </div>
+                    <!-- Kartu 3 -->
+                    <div class="bg-gray-900 p-6 rounded-xl shadow-2xl border border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://placehold.co/400x200/111827/FFF?text=Arya+Town+House+3" alt="Arya Town House 3" class="rounded-md mb-4 mx-auto">
+                        <h3 class="text-2xl font-bold text-cyan-300">Arya Town House 3</h3>
+                        <p class="text-lg text-white font-semibold">Jatisampurna, Bekasi</p>
+                        <p class="text-gray-300 mt-2">Status: <span class="font-bold text-white">Fase Penjualan Akhir</span></p>
+                        <p class="text-lg text-white font-bold mt-2">Kredibilitas Premium</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-arrow text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Slide 7: Masa Depan (Pipeline) -->
+        <section class="snap-slide bg-gray-900">
+            <div class="text-center max-w-4xl">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8">Pipa Penjualan Anda <span class="text-cyan-300">Tidak Akan Kering</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-10">
+                    Ini bukan kemitraan satu proyek. Ini adalah kemitraan jangka panjang.
+                </a
+                <!--  -->
+                <div class="space-y-4 text-left">
+                    <div class="bg-gray-800 p-5 rounded-lg">
+                        <p class="text-xl text-white">Proyeksi Masa Depan: <span class="font-bold text-cyan-300">"Arya Town House 4"</span> di Jatisampurna.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg">
+                        <p class="text-xl text-white">Proyeksi Masa Depan: <span class="font-bold text-cyan-300">"De Araz Tahap 2"</span> di Depok atau lokasi baru.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg">
+                        <p class="text-xl text-white">Peluang Berkelanjutan: <span class="font-bold text-cyan-300">Pasar Sekunder (Resale & Sewa)</span> dari proyek-proyek matang.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-arrow text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Slide 8: Ajakan Bertindak (CTA) -->
+        <section class="snap-slide bg-cyan-800 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                Mulai Hari Ini.
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mb-10">
+                Jangan hanya menjual rumah. Bangun masa depan dan reputasi Anda bersama kami.
+            </p>
+            
+            <div class="bg-gray-900 p-8 rounded-lg shadow-2xl max-w-lg mx-auto text-left">
+                <h3 class="text-2xl font-bold text-white text-center mb-6">Langkah Anda Selanjutnya:</h3>
+                <ol class="list-decimal list-inside space-y-3 text-lg text-gray-200">
+                    <li><span class="font-semibold">Hubungi Tim Rekrutmen Kami</span> untuk menyatakan minat.</li>
+                    <li><span class="font-semibold">Jadwalkan Sesi Strategi Portofolio</span> (1-on-1).</li>
+                    <li><span class="font-semibold">Dapatkan Akses Penuh</span> ke materi & jaringan pemasaran.</li>
+                </ol>
+                <div class="mt-8 text-center">
+                    <a href="mailto:rekrutmen@emailanda.com" class="inline-block bg-cyan-500 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:bg-cyan-400 transition-colors duration-300">
+                        Hubungi Kami Sekarang
+                    </a>
+                </div>
+            </div>
+             <p class="text-lg text-cyan-100 mt-8">
+                Kami menangani riset. Anda fokus pada kesuksesan.
+            </p>
+        </section>
+
+    </main>
+
+</body>
+</html>
