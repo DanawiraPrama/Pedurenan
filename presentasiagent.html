@@ -7,29 +7,26 @@
     <!-- Memuat Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Menggunakan font Inter dari Tailwind default */
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Membuat container scroll-snap */
         .snap-container {
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
             height: 100vh;
         }
-        /* Membuat setiap 'slide' menjadi titik snap */
         .snap-slide {
             scroll-snap-align: start;
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            padding: 2.5rem; /* padding 40px */
+            padding: 2.5rem;
             position: relative;
+            overflow: hidden;
         }
-        /* Helper untuk panah 'scroll down' */
         .scroll-arrow {
             position: absolute;
             bottom: 2rem;
@@ -48,13 +45,28 @@
                 transform: translateX(-50%) translateY(-10px);
             }
         }
-        /* Animasi fade in */
         .fade-in {
             animation: fadeIn 1s ease-in;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        /* Memastikan konten tidak bertumpuk */
+        .content-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* Menambahkan ruang antar elemen */
+        .spacing-lg {
+            margin-bottom: 3rem;
+        }
+        .spacing-md {
+            margin-bottom: 2rem;
+        }
+        .spacing-sm {
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -64,17 +76,17 @@
 
         <!-- Slide 1: Judul / Pembuka -->
         <section class="snap-slide text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80');">
-            <div class="fade-in">
+            <div class="content-container fade-in">
                 <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
                     Kemitraan Pilihan untuk <span class="text-cyan-300">Pertumbuhan Strategis</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl font-light text-cyan-300">
+                <h2 class="text-2xl md:text-3xl font-light text-cyan-300 spacing-md">
                     Bangun Rekam Jejak, Buka Peluang Bersama Kami
                 </h2>
-                <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl">
+                <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto spacing-md">
                     Bergabunglah dengan tim agen elit untuk menjual portofolio properti premium di Bekasi & Depok. Lebih dari <span class="font-bold text-white">176 unit hunian</span> telah berhasil dikembangkan sejak 2017.
                 </p>
-                <div class="mt-8">
+                <div class="spacing-lg">
                     <a href="#cta" class="inline-block bg-cyan-500 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:bg-cyan-400 transition-colors duration-300">
                         Daftar Sekarang
                     </a>
@@ -89,15 +101,15 @@
 
         <!-- Slide 2: Rekam Jejak Terbukti -->
         <section class="snap-slide bg-gray-800">
-            <div class="text-center max-w-6xl fade-in">
+            <div class="content-container text-center fade-in">
                 <h2 class="text-3xl md:text-5xl font-bold mb-6 text-cyan-300">Rekam Jejak <span class="text-white">Terbukti</span> 2017-2024</h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-8">
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
                     Lebih dari <span class="font-bold text-white">7 tahun pengalaman</span> dengan portofolio <span class="font-bold text-white">8 proyek berbeda</span> dan total lebih dari <span class="font-bold text-white">176 unit hunian</span> yang sukses dikembangkan.
                 </p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-cyan-500">
-                        <h3 class="text-xl font-bold text-cyan-300 mb-4">Fase 1: Dominasi Jatisampurna (2017-2024)</h3>
+                    <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-cyan-500 h-full">
+                        <h3 class="text-xl font-bold text-cyan-300 mb-4 spacing-sm">Fase 1: Dominasi Jatisampurna (2017-2024)</h3>
                         <ul class="text-gray-300 space-y-3">
                             <li class="flex items-start">
                                 <span class="text-green-400 mr-2 mt-1">✓</span>
@@ -117,8 +129,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-cyan-500">
-                        <h3 class="text-xl font-bold text-cyan-300 mb-4">Fase 2: Ekspansi & Diversifikasi (2022-Sekarang)</h3>
+                    <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-cyan-500 h-full">
+                        <h3 class="text-xl font-bold text-cyan-300 mb-4 spacing-sm">Fase 2: Ekspansi & Diversifikasi (2022-Sekarang)</h3>
                         <ul class="text-gray-300 space-y-3">
                             <li class="flex items-start">
                                 <span class="text-green-400 mr-2 mt-1">✓</span>
@@ -155,28 +167,24 @@
 
         <!-- Slide 3: Keunggulan Kompetitif -->
         <section class="snap-slide bg-gray-900">
-            <div class="text-center max-w-4xl fade-in">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6">Keunggulan Kompetitif <span class="text-cyan-300">Pengembang Perorangan</span></h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-8">
+            <div class="content-container text-center fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 spacing-sm">Keunggulan Kompetitif <span class="text-cyan-300">Pengembang Perorangan</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
                     Sebagai pengembang perorangan, kami menawarkan <span class="font-bold text-white">nilai unik yang tidak dapat ditandingi</span> oleh entitas korporat yang lebih besar.
                 </p>
                 
-                <div class="space-y-6 text-left mt-8">
+                <div class="space-y-6 text-left max-w-4xl mx-auto">
                     <div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">1. Ketangkasan (Agility) dalam Pengambilan Keputusan</h3>
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2 spacing-sm">1. Ketangkasan (Agility) dalam Pengambilan Keputusan</h3>
                         <p class="text-lg text-gray-300">Keputusan cepat tanpa birokrasi lambat. Mampu mengeksekusi <span class="font-bold text-white">4 model produk berbeda secara bersamaan</span> - dari estate menengah hingga aset ultra-luxury.</p>
                     </div>
                     <div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">2. Kecepatan Penjualan yang Terbukti & Terukur</h3>
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2 spacing-sm">2. Kecepatan Penjualan yang Terbukti & Terukur</h3>
                         <p class="text-lg text-gray-300"><span class="font-bold text-white">De Azra Residence terjual penuh (32 unit)</span> dan <span class="font-bold text-white">Bukit Pratama 94% terjual</span> (hanya tersisa 3 unit). Bagi agen, ini berarti <span class="text-cyan-300">komisi lebih cepat dan aliran pendapatan stabil</span>.</p>
                     </div>
                     <div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">3. Dukungan Penjualan Aktif & Promosi Agresif</h3>
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2 spacing-sm">3. Dukungan Penjualan Aktif & Promosi Agresif</h3>
                         <p class="text-lg text-gray-300">Promosi agresif seperti <span class="font-bold text-white">DP 5%, FREE BPHTB, FREE IMB, FREE AJB, FREE Kitchen Set</span> dan bonus fisik lainnya untuk mempercepat closing dan memudahkan pekerjaan agen.</p>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">4. Diversifikasi Portofolio = Peluang Jangka Panjang</h3>
-                        <p class="text-lg text-gray-300">Dari segmen value (~Rp 900 juta) hingga ultra-luxury (Rp 14 miliar) dalam satu payung. <span class="text-cyan-300">Satu agen bisa melayani semua jenis klien</span> - dari pembeli pertama hingga High-Net-Worth Individuals.</p>
                     </div>
                 </div>
             </div>
@@ -189,25 +197,25 @@
 
         <!-- Slide 4: Peluang Inventaris Saat Ini -->
         <section class="snap-slide bg-gray-800">
-            <div class="w-full max-w-6xl text-center fade-in">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">
+            <div class="content-container text-center fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 spacing-sm">
                     Peluang <span class="text-cyan-300">Inventaris Saat Ini</span>
                 </h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto spacing-md">
                     Inilah <span class="font-bold text-white">4 peluang inventaris premium</span> yang siap Anda jual hari ini. Masing-masing dengan proposisi nilai unik dan target pasar yang berbeda.
                 </p>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 spacing-lg">
                     <!-- Kartu 1: Bukit Pratama Residence -->
                     <div class="bg-gray-900 p-6 rounded-xl shadow-2xl border border-cyan-700 transform hover:scale-105 transition-transform duration-300 h-full flex flex-col">
                         <div class="h-32 bg-gradient-to-br from-cyan-800 to-cyan-600 rounded-md mb-4 flex items-center justify-center">
                             <span class="text-white font-bold text-xl text-center">UNIT TERAKHIR<br>ESTATE MATANG</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-cyan-300">Bukit Pratama Residence</h3>
-                        <p class="text-lg text-white font-semibold">Jatisampurna, Bekasi</p>
-                        <p class="text-gray-300 mt-2 text-sm">Hanya tersisa <span class="font-bold text-white">3 unit</span> dari 47 unit (<span class="text-green-400">94% TERJUAL</span>)</p>
-                        <p class="text-lg text-white font-bold mt-2">Rp 1.6 - 2.3 M (Nego)</p>
-                        <p class="text-sm text-cyan-300 mt-2 flex-grow">Siap huni di estate premium yang sudah matang & terbukti</p>
+                        <h3 class="text-2xl font-bold text-cyan-300 spacing-sm">Bukit Pratama Residence</h3>
+                        <p class="text-lg text-white font-semibold spacing-sm">Jatisampurna, Bekasi</p>
+                        <p class="text-gray-300 text-sm spacing-sm">Hanya tersisa <span class="font-bold text-white">3 unit</span> dari 47 unit (<span class="text-green-400">94% TERJUAL</span>)</p>
+                        <p class="text-lg text-white font-bold spacing-sm">Rp 1.6 - 2.3 M (Nego)</p>
+                        <p class="text-sm text-cyan-300 flex-grow spacing-sm">Siap huni di estate premium yang sudah matang & terbukti</p>
                         <div class="mt-4">
                             <span class="inline-block bg-cyan-800 text-cyan-100 text-xs px-2 py-1 rounded">SCARCITY PLAY</span>
                             <span class="inline-block bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded ml-1">READY STOCK</span>
@@ -219,11 +227,11 @@
                         <div class="h-32 bg-gradient-to-br from-green-800 to-green-600 rounded-md mb-4 flex items-center justify-center">
                             <span class="text-white font-bold text-xl text-center">CLUSTER BARU<br>ZONA PERTUMBUHAN</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-cyan-300">De Araz Residence</h3>
-                        <p class="text-lg text-white font-semibold">Tapos, Depok</p>
-                        <p class="text-gray-300 mt-2 text-sm"><span class="font-bold text-white">11 unit tersedia</span> - Peluncuran baru</p>
-                        <p class="text-lg text-white font-bold mt-2">Rp 921 Jt - 1.2 M</p>
-                        <p class="text-sm text-cyan-300 mt-2 flex-grow">Didukung promo agresif: DP 5% & berbagai insentif menarik</p>
+                        <h3 class="text-2xl font-bold text-cyan-300 spacing-sm">De Araz Residence</h3>
+                        <p class="text-lg text-white font-semibold spacing-sm">Tapos, Depok</p>
+                        <p class="text-gray-300 text-sm spacing-sm"><span class="font-bold text-white">11 unit tersedia</span> - Peluncuran baru</p>
+                        <p class="text-lg text-white font-bold spacing-sm">Rp 921 Jt - 1.2 M</p>
+                        <p class="text-sm text-cyan-300 flex-grow spacing-sm">Didukung promo agresif: DP 5% & berbagai insentif menarik</p>
                         <div class="mt-4">
                             <span class="inline-block bg-green-800 text-green-100 text-xs px-2 py-1 rounded">GROWTH PLAY</span>
                             <span class="inline-block bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded ml-1">PROMO BESAR</span>
@@ -235,11 +243,11 @@
                         <div class="h-32 bg-gradient-to-br from-purple-800 to-purple-600 rounded-md mb-4 flex items-center justify-center">
                             <span class="text-white font-bold text-xl text-center">KLASTER BOUTIQUE<br>EKSLUSIF TERBATAS</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-cyan-300">Cikunir Residence</h3>
-                        <p class="text-lg text-white font-semibold">Cikunir, Bekasi</p>
-                        <p class="text-gray-300 mt-2 text-sm">Hanya <span class="font-bold text-white">3-7 unit eksklusif</span></p>
-                        <p class="text-lg text-white font-bold mt-2">~ Rp 900 Jt</p>
-                        <p class="text-sm text-cyan-300 mt-2 flex-grow">Rumah 2 lantai di bawah 1M di lokasi strategis dekat tol & LRT</p>
+                        <h3 class="text-2xl font-bold text-cyan-300 spacing-sm">Cikunir Residence</h3>
+                        <p class="text-lg text-white font-semibold spacing-sm">Cikunir, Bekasi</p>
+                        <p class="text-gray-300 text-sm spacing-sm">Hanya <span class="font-bold text-white">3-7 unit eksklusif</span></p>
+                        <p class="text-lg text-white font-bold spacing-sm">~ Rp 900 Jt</p>
+                        <p class="text-sm text-cyan-300 flex-grow spacing-sm">Rumah 2 lantai di bawah 1M di lokasi strategis dekat tol & LRT</p>
                         <div class="mt-4">
                             <span class="inline-block bg-purple-800 text-purple-100 text-xs px-2 py-1 rounded">VALUE PLAY</span>
                             <span class="inline-block bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded ml-1">FAST MOVING</span>
@@ -251,11 +259,11 @@
                         <div class="h-32 bg-gradient-to-br from-yellow-800 to-yellow-600 rounded-md mb-4 flex items-center justify-center">
                             <span class="text-white font-bold text-xl text-center">ULTRA LUXURY<br>PRESTIGE ASSET</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-cyan-300">Rumah Eksklusif</h3>
-                        <p class="text-lg text-white font-semibold">Cimanggis, Depok</p>
-                        <p class="text-gray-300 mt-2 text-sm"><span class="font-bold text-white">1 unit prestise</span> - Komisi tinggi</p>
-                        <p class="text-lg text-white font-bold mt-2">Rp 14 Miliar</p>
-                        <p class="text-sm text-cyan-300 mt-2 flex-grow">LT 1056 m² / LB 145 m² - Estate pribadi untuk klien HNW</p>
+                        <h3 class="text-2xl font-bold text-cyan-300 spacing-sm">Rumah Eksklusif</h3>
+                        <p class="text-lg text-white font-semibold spacing-sm">Cimanggis, Depok</p>
+                        <p class="text-gray-300 text-sm spacing-sm"><span class="font-bold text-white">1 unit prestise</span> - Komisi tinggi</p>
+                        <p class="text-lg text-white font-bold spacing-sm">Rp 14 Miliar</p>
+                        <p class="text-sm text-cyan-300 flex-grow spacing-sm">LT 1056 m² / LB 145 m² - Estate pribadi untuk klien HNW</p>
                         <div class="mt-4">
                             <span class="inline-block bg-yellow-800 text-yellow-100 text-xs px-2 py-1 rounded">PRESTIGE PLAY</span>
                             <span class="inline-block bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded ml-1">HIGH COMMISSION</span>
@@ -263,7 +271,7 @@
                     </div>
                 </div>
                 
-                <p class="text-lg text-cyan-300 mt-8 font-semibold">
+                <p class="text-lg text-cyan-300 font-semibold">
                     Setiap produk memiliki cerita dan nilai jual yang kuat. Yang perlu Anda lakukan: <span class="text-white">MENJUAL!</span>
                 </p>
             </div>
@@ -276,15 +284,15 @@
 
         <!-- Slide 5: Analisis Pasar Strategis -->
         <section class="snap-slide bg-gray-900">
-            <div class="text-center max-w-4xl fade-in">
-                <h2 class="text-3xl md:text-5xl font-bold mb-8">Analisis Pasar Strategis <span class="text-cyan-300">2025-2027</span></h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+            <div class="content-container text-center fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 spacing-sm">Analisis Pasar Strategis <span class="text-cyan-300">2025-2027</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto spacing-md">
                     Keberhasilan portofolio ini <span class="font-bold text-white">bukanlah kebetulan</span>. Ini didasarkan pada pemilihan lokasi yang cermat yang memanfaatkan tren infrastruktur dan demografi.
                 </p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-cyan-500">
-                        <h3 class="text-2xl font-bold text-cyan-300 mb-4">Koridor Selatan Bekasi: Matang & Likuid</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 spacing-lg">
+                    <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-cyan-500 h-full">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-4 spacing-sm">Koridor Selatan Bekasi: Matang & Likuid</h3>
                         <ul class="text-gray-300 space-y-3 text-left">
                             <li class="flex items-start">
                                 <span class="text-green-400 mr-2 mt-1">✓</span>
@@ -303,11 +311,11 @@
                                 <span><span class="font-bold text-white">Lahan semakin langka</span> - hanya 74,41 hektar tersisa untuk pengembangan horizontal</span>
                             </li>
                         </ul>
-                        <p class="text-cyan-300 font-semibold mt-4 text-left">Proposisi untuk Agen: <span class="text-white">Stabilitas & Kelangkaan</span></p>
+                        <p class="text-cyan-300 font-semibold mt-4 text-left spacing-sm">Proposisi untuk Agen: <span class="text-white">Stabilitas & Kelangkaan</span></p>
                     </div>
                     
-                    <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-green-500">
-                        <h3 class="text-2xl font-bold text-cyan-300 mb-4">Segitiga Pertumbuhan Depok: Momentum & Apresiasi</h3>
+                    <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-green-500 h-full">
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-4 spacing-sm">Segitiga Pertumbuhan Depok: Momentum & Apresiasi</h3>
                         <ul class="text-gray-300 space-y-3 text-left">
                             <li class="flex items-start">
                                 <span class="text-green-400 mr-2 mt-1">✓</span>
@@ -326,11 +334,11 @@
                                 <span>Ideal untuk pembeli <span class="font-bold text-white">berorientasi investasi & capital gain</span></span>
                             </li>
                         </ul>
-                        <p class="text-cyan-300 font-semibold mt-4 text-left">Proposisi untuk Agen: <span class="text-white">Pertumbuhan Masa Depan</span></p>
+                        <p class="text-cyan-300 font-semibold mt-4 text-left spacing-sm">Proposisi untuk Agen: <span class="text-white">Pertumbuhan Masa Depan</span></p>
                     </div>
                 </div>
                 
-                <div class="bg-cyan-900 p-6 rounded-lg max-w-3xl mx-auto mt-8">
+                <div class="bg-cyan-900 p-6 rounded-lg max-w-3xl mx-auto">
                     <p class="text-xl md:text-2xl font-semibold text-white">
                         "Kami sudah melakukan riset mendalam. Yang perlu Anda lakukan: <span class="text-cyan-300">Gunakan 'amunisi intelektual' ini untuk meyakinkan pembeli!</span>"
                     </p>
@@ -345,35 +353,29 @@
 
         <!-- Slide 6: Manfaat untuk Agen -->
         <section class="snap-slide bg-gray-800">
-            <div class="text-center max-w-4xl fade-in">
-                <h2 class="text-3xl md:text-5xl font-bold mb-8">Mengapa Bergabung dengan <span class="text-cyan-300">Kami?</span></h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+            <div class="content-container text-center fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 spacing-sm">Mengapa Bergabung dengan <span class="text-cyan-300">Kami?</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto spacing-md">
                     Ini bukan sekadar menjual properti. Ini tentang <span class="font-bold text-white">membangun masa depan dan reputasi Anda</span> bersama pengembang terbukti.
                 </p>
                 
-                <div class="space-y-6 text-left">
+                <div class="space-y-6 text-left max-w-4xl mx-auto">
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-cyan-700">
-                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">1. Portofolio Terdiversifikasi = Revenue Stream Beragam</h3>
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2 spacing-sm">1. Portofolio Terdiversifikasi = Revenue Stream Beragam</h3>
                         <p class="text-lg text-gray-300">Dari rumah bernilai tinggi (Rp 900 juta) hingga mansion ultra-luxury (Rp 14 miliar) dalam satu payung pengembang yang sama. <span class="text-cyan-300">Satu agen, semua segmen pasar!</span></p>
                     </div>
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-cyan-700">
-                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">2. Kinerja Terbukti = Komisi Lebih Cepat & Pasti</h3>
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2 spacing-sm">2. Kinerja Terbukti = Komisi Lebih Cepat & Pasti</h3>
                         <p class="text-lg text-gray-300">Rekam jejak proyek sold-out (De Azra Residence) dan near-sold-out (Bukit Pratama Residence, 94% terjual). <span class="text-cyan-300">Produk yang laku = komisi yang mengalir deras!</span></p>
                     </div>
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-cyan-700">
-                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">3. Dukungan Aktif = Closing Lebih Mudah</h3>
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2 spacing-sm">3. Dukungan Aktif = Closing Lebih Mudah</h3>
                         <p class="text-lg text-gray-300">Model kemitraan sejati dengan promosi agresif (DP 5%, Bebas Biaya) untuk mempercepat penjualan. <span class="text-cyan-300">Kami bantu hilangkan hambatan pembeli!</span></p>
                     </div>
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-cyan-700">
-                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2">4. Akses Tak Tertandingi = Keunggulan Kompetitif</h3>
+                        <h3 class="text-2xl font-semibold text-cyan-300 mb-2 spacing-sm">4. Akses Tak Tertandingi = Keunggulan Kompetitif</h3>
                         <p class="text-lg text-gray-300">Keputusan cepat, negosiasi fleksibel, dan komunikasi langsung dengan pengambil keputusan. <span class="text-cyan-300">Tidak ada birokrasi, hanya hasil!</span></p>
                     </div>
-                </div>
-                
-                <div class="bg-cyan-900 p-6 rounded-lg max-w-2xl mx-auto mt-8">
-                    <p class="text-xl md:text-2xl font-semibold text-white">
-                        "Kami mencari <span class="text-cyan-300">agen-agen terpilih</span> yang siap membangun kemitraan jangka panjang, bukan sekadar transaksi!"
-                    </p>
                 </div>
             </div>
             <div class="scroll-arrow text-white">
@@ -385,35 +387,35 @@
 
         <!-- Slide 7: Testimoni & Keberhasilan -->
         <section class="snap-slide bg-gray-900">
-            <div class="text-center max-w-4xl fade-in">
-                <h2 class="text-3xl md:text-5xl font-bold mb-8">Bukti <span class="text-cyan-300">Keberhasilan</span></h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+            <div class="content-container text-center fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 spacing-sm">Bukti <span class="text-cyan-300">Keberhasilan</span></h2>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto spacing-md">
                     Jangan hanya percaya kata-kata kami. Lihatlah <span class="font-bold text-white">bukti nyata</span> yang berbicara sendiri.
                 </p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 spacing-lg">
                     <div class="bg-gray-800 p-6 rounded-lg border border-cyan-700">
                         <div class="text-5xl font-bold text-cyan-300 mb-4">94%</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Tingkat Penyerapan</h3>
+                        <h3 class="text-xl font-bold text-white mb-2 spacing-sm">Tingkat Penyerapan</h3>
                         <p class="text-gray-300">Bukit Pratama Residence dengan 47 unit, hanya tersisa 3 unit.</p>
                     </div>
                     
                     <div class="bg-gray-800 p-6 rounded-lg border border-green-700">
                         <div class="text-5xl font-bold text-cyan-300 mb-4">32</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Unit Terjual Penuh</h3>
+                        <h3 class="text-xl font-bold text-white mb-2 spacing-sm">Unit Terjual Penuh</h3>
                         <p class="text-gray-300">De Azra Residence 1 & 2 terjual habis dalam waktu relatif singkat.</p>
                     </div>
                     
                     <div class="bg-gray-800 p-6 rounded-lg border border-purple-700">
                         <div class="text-5xl font-bold text-cyan-300 mb-4">176+</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Total Unit Terbangun</h3>
+                        <h3 class="text-xl font-bold text-white mb-2 spacing-sm">Total Unit Terbangun</h3>
                         <p class="text-gray-300">Sejak 2017, lebih dari 176 unit hunian berhasil dikembangkan.</p>
                     </div>
                 </div>
                 
                 <div class="bg-gray-800 p-6 rounded-lg border border-yellow-700 max-w-3xl mx-auto">
-                    <h3 class="text-2xl font-bold text-cyan-300 mb-4">Dukungan Promosi yang Agresif & Terukur</h3>
-                    <div class="flex flex-wrap justify-center gap-4 mt-4">
+                    <h3 class="text-2xl font-bold text-cyan-300 mb-4 spacing-sm">Dukungan Promosi yang Agresif & Terukur</h3>
+                    <div class="flex flex-wrap justify-center gap-4 mt-4 spacing-sm">
                         <span class="bg-cyan-800 text-white px-4 py-2 rounded-lg font-semibold">DP KPR Hanya 5%</span>
                         <span class="bg-cyan-800 text-white px-4 py-2 rounded-lg font-semibold">FREE BPHTB</span>
                         <span class="bg-cyan-800 text-white px-4 py-2 rounded-lg font-semibold">FREE IMB</span>
@@ -432,16 +434,16 @@
 
         <!-- Slide 8: Ajakan Bertindak (CTA) -->
         <section id="cta" class="snap-slide bg-gradient-to-br from-cyan-800 to-cyan-600 text-center">
-            <div class="fade-in">
-                <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+            <div class="content-container fade-in">
+                <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-6 spacing-sm">
                     Bergabunglah dengan <span class="text-white">Tim Agen Elit</span> Kami
                 </h2>
-                <p class="text-xl md:text-2xl text-cyan-100 max-w-2xl mb-10">
+                <p class="text-xl md:text-2xl text-cyan-100 max-w-2xl mb-10 mx-auto spacing-md">
                     Ini adalah <span class="font-bold text-white">undangan eksklusif</span> bagi agen-agen properti terpilih untuk menjadi bagian dari jaringan mitra inti.
                 </p>
                 
-                <div class="bg-gray-900 p-8 rounded-lg shadow-2xl max-w-lg mx-auto text-left border border-cyan-500">
-                    <h3 class="text-2xl font-bold text-white text-center mb-6">Langkah Bergabung:</h3>
+                <div class="bg-gray-900 p-8 rounded-lg shadow-2xl max-w-lg mx-auto text-left border border-cyan-500 spacing-lg">
+                    <h3 class="text-2xl font-bold text-white text-center mb-6 spacing-sm">Langkah Bergabung:</h3>
                     <ol class="list-decimal list-inside space-y-4 text-lg text-gray-200">
                         <li><span class="font-semibold text-cyan-300">Hubungi Tim Rekrutmen</span> untuk menyatakan minat dan menjadwalkan sesi pengenalan</li>
                         <li><span class="font-semibold text-cyan-300">Dapatkan Akses Prioritas</span> ke seluruh inventaris dan materi pemasaran eksklusif</li>
@@ -454,8 +456,8 @@
                     </div>
                 </div>
                 
-                <div class="mt-8 bg-cyan-900 bg-opacity-50 p-6 rounded-lg max-w-2xl mx-auto">
-                    <p class="text-lg text-cyan-100">
+                <div class="bg-cyan-900 bg-opacity-50 p-6 rounded-lg max-w-2xl mx-auto">
+                    <p class="text-lg text-cyan-100 spacing-sm">
                         <span class="font-bold text-white">Akses prioritas</span> tidak hanya ke inventaris saat ini, tetapi juga ke <span class="font-bold text-white">pipeline proyek-proyek di masa depan</span>.
                     </p>
                     <p class="text-xl font-bold text-white mt-4">
