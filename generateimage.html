@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-g">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Gambar: Ibadah di Tanah Suci</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Animasi spinner */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #0ea5e9;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl w-full max-w-lg mx-auto">
+        <h1 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-2">Gambar Simbolis Ibadah</h1>
+        <p class="text-center text-gray-600 mb-6">Ubah teks di kotak di bawah sesuai keinginan Anda, lalu klik tombol untuk membuat gambar.</p>
+        
+        <!-- Input Prompt Pengguna -->
+        <div class="mb-4">
+            <label for="promptInput" class="block text-sm font-medium text-gray-700 mb-1">Prompt Gambar (Deskripsi):</label>
+            <textarea id="promptInput" rows="5" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-sky-500 focus:border-sky-500">A symbolic photo focusing on a person's hands in ihram (white pilgrimage cloth) holding a smartphone. The phone's screen is pointed towards the Ka'bah, which is visible but blurred in the background. The focus is on the act of capturing the image, not the person. No faces are visible, emphasizing the action over identity. The lighting suggests being inside the Grand Mosque.</textarea>
+        </div>
+
+        <!-- Tombol Generate -->
+        <button id="generateButton" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-all duration-300 ease-in-out flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                <path d="M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4h-8Zm0 1h8a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3Z"/>
+                <path d="M10.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                <path d="M3.002 12a1 1 0 0 1-1-1v-1l1.646-1.646a.5.5 0 0 1 .708 0l1.91 1.91L9.71 8.854a.5.5 0 0 1 .708 0L13.002 12v1a1 1 0 0 1-1 1h-9Z"/>
+            </svg>
+            Buat Gambar
+        </button>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="mt-6 flex-col items-center justify-center hidden">
+            <div class="spinner"></div>
+            <p class="text-gray-600 mt-3">Harap tunggu, gambar sedang dibuat...</p>
+        </div>
+        
+        <!-- Pesan Error -->
+        <div id="errorMessage" class="mt-4 text-center text-red-600 font-medium hidden"></div>
+
+        <!-- Image Display Area -->
+        <div id="imageContainer" class="mt-6 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 min-h-[250px] flex items-center justify-center hidden">
+            <img id="generatedImage" src="" alt="Gambar yang dihasilkan" class="rounded-lg max-w-full h-auto">
+        </div>
+    </div>
+
+    <script>
+        const generateButton = document.getElementById('generateButton');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const imageContainer = document.getElementById('imageContainer');
+        const generatedImage = document.getElementById('generatedImage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        generateButton.addEventListener('click', generateImage);
+
+        async function generateImage() {
+            // Ambil prompt dari text area
+            const userPrompt = document.getElementById('promptInput').value;
+
+            // Validasi prompt
+            if (!userPrompt.trim()) {
+                errorMessage.textContent = 'Prompt tidak boleh kosong. Harap masukkan deskripsi gambar.';
+                errorMessage.classList.remove('hidden');
+                return; // Hentikan eksekusi
+            }
+
+            // Sembunyikan error, tombol, dan gambar lama
+            errorMessage.classList.add('hidden');
+            errorMessage.textContent = '';
+            imageContainer.classList.add('hidden');
+            generateButton.disabled = true;
+            generateButton.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            // Tampilkan loading
+            loadingIndicator.classList.remove('hidden');
+            loadingIndicator.classList.add('flex');
+
+            // Prompt yang sesuai dengan permintaan: fokus pada tangan dan HP, Ka'bah di latar belakang, tanpa wajah.
+            // INI DIHAPUS KARENA SUDAH DIAMBIL DARI TEXTAREA
+            // const userPrompt = "A symbolic photo focusing on a person's hands in ihram (white pilgrimage cloth) holding a smartphone. The phone's screen is pointed towards the Ka'bah, which is visible but blurred in the background. The focus is on the act of capturing the image, not the person. No faces are visible, emphasizing the action over identity. The lighting suggests being inside the Grand Mosque.";
+            
+            const apiKey = ""; // API key akan diisi oleh Canvas
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+            const payload = {
+                instances: { prompt: userPrompt },
+                parameters: { sampleCount: 1 }
+            };
+
+            try {
+                // Implementasi exponential backoff
+                let response;
+                let retries = 0;
+                const maxRetries = 5;
+                let delay = 1000;
+
+                while (retries < maxRetries) {
+                    response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        break; // Sukses, keluar dari loop
+                    }
+
+                    if (response.status === 429 || response.status >= 500) {
+                        // Throttling atau server error, coba lagi
+                        retries++;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2; // Tambah waktu tunggu
+                    } else {
+                        // Error lain yang tidak bisa di-retry
+                        throw new Error(`Error: ${response.status} ${response.statusText}`);
+                    }
+                }
+
+                if (!response.ok) {
+                    throw new Error(`Gagal membuat gambar setelah ${maxRetries} kali percobaan.`);
+                }
+                
+                const result = await response.json();
+
+                if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                    const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                    generatedImage.src = imageUrl;
+                    imageContainer.classList.remove('hidden');
+                } else {
+                    // Handle jika API sukses tapi tidak ada gambar
+                    throw new Error("Respon API tidak valid atau tidak berisi gambar.");
+                }
+
+            } catch (error) {
+                console.error('Error generating image:', error);
+                errorMessage.textContent = `Terjadi kesalahan saat membuat gambar: ${error.message}. Silakan coba lagi.`;
+                errorMessage.classList.remove('hidden');
+            } finally {
+                // Sembunyikan loading
+                loadingIndicator.classList.add('hidden');
+                loadingIndicator.classList.remove('flex');
+                
+                // Aktifkan tombol kembali
+                generateButton.disabled = false;
+                generateButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+    </script>
+</body>
+</html>
